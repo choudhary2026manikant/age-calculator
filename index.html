@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Age Calculator</title>
+
+    <!-- हमारी CSS file -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Age Calculator</h1>
+    <main class="container">
 
-    <p>यह हमारी पहली वेबसाइट है।</p>
+        <h1>Age Calculator</h1>
+
+        <p class="description">
+            अपनी जन्म तारीख डालकर अपनी सही उम्र जानें।
+        </p>
+
+        <label for="birthDate">
+            Date of Birth
+        </label>
+
+        <input type="date" id="birthDate">
+
+        <button type="button">
+            Calculate Age
+        </button>
+
+        <div class="result">
+            <p>आपकी उम्र यहाँ दिखाई जाएगी।</p>
+        </div>
+
+    </main>
+
 </body>
+
 </html>
-<link rel="stylesheet" href="style.css">
