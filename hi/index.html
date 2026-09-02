@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Age Calculator Hindi – उम्र कैलकुलेटर | सटीक उम्र जानें</title>
+
+  <meta name="description" content="Hindi Age Calculator से अपनी सही उम्र साल, महीने और दिनों में जानें। जन्म तारीख और Age as on Date डालकर सटीक उम्र, अगला जन्मदिन और जीवन के आँकड़े देखें।">
+
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Age Calculator">
+
+  <link rel="canonical" href="https://choudhary2026manikant.github.io/age-calculator/hi/">
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .language-bar{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-left:auto;
+    }
+
+    .language-bar a{
+      text-decoration:none;
+      color:#25324a;
+      font-size:13px;
+      font-weight:800;
+      padding:8px 11px;
+      border-radius:8px;
+      background:#f3f6fa;
+    }
+
+    .language-bar a.active{
+      color:#fff;
+      background:linear-gradient(135deg,#087ff5,#7c2ff3);
+    }
+
+    .hindi-content{
+      max-width:1160px;
+      margin:18px auto;
+      padding:24px 28px;
+      background:#fff;
+      border:1px solid #e8ecf3;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+    }
+
+    .hindi-content h2{
+      margin-top:0;
+      font-size:22px;
+    }
+
+    .hindi-content h3{
+      font-size:17px;
+      margin-top:22px;
+    }
+
+    .hindi-content p,
+    .hindi-content li{
+      color:#58667b;
+      font-size:14px;
+    }
+
+    .hindi-content ol,
+    .hindi-content ul{
+      padding-left:22px;
+    }
+
+    @media(max-width:650px){
+      .language-bar{
+        display:none;
+      }
+
+      .hindi-content{
+        margin:14px 12px;
+        padding:20px;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Hindi Age Calculator",
+    "url":"https://choudhary2026manikant.github.io/age-calculator/hi/",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"Web Browser",
+    "description":"Hindi Age Calculator से जन्म तारीख के आधार पर सटीक उम्र की गणना करें।",
+    "inLanguage":"hi"
+  }
+  </script>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="./">
+      <div class="brand-icon">🎂</div>
+      <div>
+        <strong>Age Calculator</strong>
+        <small>INDIA</small>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="./" class="active">उम्र कैलकुलेटर</a>
+      <a href="#how-to-use">कैसे इस्तेमाल करें</a>
+      <a href="#faq">FAQ</a>
+      <a href="../">English</a>
+    </nav>
+
+    <div class="language-bar">
+      <a href="../">EN</a>
+      <a href="./" class="active">हिंदी</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero-shell">
+
+      <div class="hero-copy">
+
+        <span class="trust-pill">
+          ✓ 100% Free &nbsp; • &nbsp; कोई Sign-up नहीं
+        </span>
+
+        <h1>
+          अपनी <span>सही उम्र</span><br>
+          तुरंत जानें
+        </h1>
+
+        <p>
+          अपनी जन्म तारीख दर्ज करें और अपनी उम्र साल, महीने और दिनों में
+          बिल्कुल आसानी से जानें। अगला जन्मदिन और जीवन के महत्वपूर्ण आँकड़े भी देखें।
+        </p>
+
+        <div class="feature-strip">
+
+          <div class="mini-feature">
+            <span>🎯</span>
+            <div>
+              <b>सटीक उम्र</b>
+              <small>साल, महीने, दिन</small>
+            </div>
+          </div>
+
+          <div class="mini-feature">
+            <span>🎂</span>
+            <div>
+              <b>अगला जन्मदिन</b>
+              <small>कितने दिन बाकी</small>
+            </div>
+          </div>
+
+          <div class="mini-feature">
+            <span>📊</span>
+            <div>
+              <b>Life Statistics</b>
+              <small>दिन से सेकंड तक</small>
+            </div>
+          </div>
+
+          <div class="mini-feature">
+            <span>🔒</span>
+            <div>
+              <b>Private</b>
+              <small>डेटा सुरक्षित</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="calculator-panel">
+
+        <div class="panel-title">
+          <span>🧮</span>
+          <h2>उम्र कैलकुलेटर</h2>
+        </div>
+
+        <div class="accent-line"></div>
+
+        <div class="date-field">
+          <label for="dateOfBirth">
+            📅 जन्म तारीख
+          </label>
+
+          <input
+            type="text"
+            id="dateOfBirth"
+            placeholder="DD/MM/YYYY"
+            inputmode="numeric"
+            maxlength="10"
+            autocomplete="bday"
+          >
+
+          <p class="field-help">
+            उदाहरण: 15/08/1995
+          </p>
+        </div>
+
+        <div class="date-field">
+          <label for="asOnDate">
+            📆 Age as on Date
+          </label>
+
+          <input
+            type="text"
+            id="asOnDate"
+            placeholder="DD/MM/YYYY"
+            inputmode="numeric"
+            maxlength="10"
+          >
+
+          <p class="field-help">
+            जिस तारीख तक उम्र जाननी है
+          </p>
+        </div>
+
+        <div class="button-group">
+          <button id="calculateBtn" type="button">
+            मेरी उम्र निकालें →
+          </button>
+
+          <button id="resetBtn" class="reset-button" type="button">
+            Reset
+          </button>
+        </div>
+
+        <p id="errorMessage" class="error-message"></p>
+
+      </div>
+
+    </section>
+
+
+    <section class="results-wrap">
+
+      <div class="result-section exact-card">
+
+        <div class="section-ribbon green">
+          🎯 आपकी सटीक उम्र
+        </div>
+
+        <p class="result-date">
+          Age as on:
+          <strong id="calculatedAsOn">—</strong>
+        </p>
+
+        <div class="age-grid">
+
+          <div class="age-box">
+            <span id="years">0</span>
+            <small>साल</small>
+            <strong>Years</strong>
+          </div>
+
+          <div class="age-box">
+            <span id="months">0</span>
+            <small>महीने</small>
+            <strong>Months</strong>
+          </div>
+
+          <div class="age-box">
+            <span id="days">0</span>
+            <small>दिन</small>
+            <strong>Days</strong>
+          </div>
+
+        </div>
+
+        <div class="details">
+
+          <div class="detail-item">
+            <span>जन्म तारीख</span>
+            <strong id="birthDateDisplay">—</strong>
+          </div>
+
+          <div class="detail-item">
+            <span>अगला जन्मदिन</span>
+            <strong id="nextBirthday">—</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="birthday-card">
+
+        <div class="section-ribbon orange">
+          🎂 अगला जन्मदिन
+        </div>
+
+        <div class="birthday-body">
+
+          <div>
+            <p>आपका अगला जन्मदिन</p>
+
+            <strong id="birthdayHighlight">—</strong>
+
+            <span>
+              📅 <span id="birthdayDate">—</span>
+            </span>
+
+            <span>
+              ⏳ <strong id="daysUntilBirthdayElement">—</strong>
+            </span>
+          </div>
+
+          <div class="cake">🎂</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="statistics-section">
+
+      <div class="section-heading">
+        <span>📊</span>
+        <h2>आपके जीवन के आँकड़े</h2>
+      </div>
+
+      <p class="statistics-subtitle">
+        चुनी गई तारीख तक अनुमानित कुल समय
+      </p>
+
+      <div class="statistics-grid">
+
+        <div class="stat-card">
+          <div class="stat-icon green-icon">📅</div>
+          <span id="totalDays" class="stat-value">0</span>
+          <span class="stat-label">कुल दिन</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon pink-icon">📆</div>
+          <span id="totalWeeks" class="stat-value">0</span>
+          <span class="stat-label">कुल सप्ताह</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">🗓️</div>
+          <span id="totalMonths" class="stat-value">0</span>
+          <span class="stat-label">कुल महीने</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon orange-icon">⏰</div>
+          <span id="totalHours" class="stat-value">0</span>
+          <span class="stat-label">कुल घंटे</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon cyan-icon">⏱️</div>
+          <span id="totalMinutes" class="stat-value">0</span>
+          <span class="stat-label">कुल मिनट</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon pink-icon">⚡</div>
+          <span id="totalSeconds" class="stat-value">0</span>
+          <span class="stat-label">कुल सेकंड</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="info-grid">
+
+      <article class="info-card mint">
+
+        <h2>
+          <span class="info-icon">✓</span>
+          यह Age Calculator क्या करता है?
+        </h2>
+
+        <ul>
+          <li>साल, महीने और दिनों में सटीक उम्र बताता है।</li>
+          <li>किसी भी चुनी गई तारीख तक उम्र निकाल सकता है।</li>
+          <li>अगले जन्मदिन की तारीख बताता है।</li>
+          <li>जन्मदिन तक बचे दिनों की जानकारी देता है।</li>
+          <li>कुल दिन, सप्ताह, महीने, घंटे, मिनट और सेकंड दिखाता है।</li>
+        </ul>
+
+        <div class="decor">🎯</div>
+
+      </article>
+
+
+      <article class="info-card blue-tint">
+
+        <h2>
+          <span class="info-icon">1</span>
+          इस्तेमाल कैसे करें?
+        </h2>
+
+        <ol>
+          <li>अपनी जन्म तारीख दर्ज करें।</li>
+          <li>Age as on Date दर्ज करें।</li>
+          <li>“मेरी उम्र निकालें” बटन दबाएँ।</li>
+          <li>अपनी सटीक उम्र और बाकी जानकारी देखें।</li>
+        </ol>
+
+        <div class="decor">🧮</div>
+
+      </article>
+
+
+      <article class="info-card purple-tint">
+
+        <h2>
+          <span class="info-icon">🔒</span>
+          आपकी Privacy
+        </h2>
+
+        <ul>
+          <li>किसी Account की जरूरत नहीं है।</li>
+          <li>कोई Sign-up आवश्यक नहीं है।</li>
+          <li>Calculator सीधे आपके Browser में चलता है।</li>
+          <li>अपनी जन्म तारीख दर्ज करके तुरंत परिणाम देखें।</li>
+        </ul>
+
+        <div class="decor">🔐</div>
+
+      </article>
+
+    </section>
+
+
+    <section id="how-to-use" class="hindi-content">
+
+      <h2>
+        Hindi Age Calculator का इस्तेमाल कैसे करें?
+      </h2>
+
+      <p>
+        यह Age Calculator आपकी जन्म तारीख के आधार पर आपकी उम्र की गणना करता है।
+        आप अपनी उम्र को साल, महीने और दिनों में देख सकते हैं।
+      </p>
+
+      <h3>Step 1: जन्म तारीख दर्ज करें</h3>
+
+      <p>
+        “जन्म तारीख” वाले बॉक्स में अपनी जन्म तारीख
+        <strong>DD/MM/YYYY</strong> format में दर्ज करें।
+      </p>
+
+      <p>
+        उदाहरण: <strong>15/08/1995</strong>
+      </p>
+
+      <h3>Step 2: Age as on Date चुनें</h3>
+
+      <p>
+        जिस तारीख तक अपनी उम्र जानना चाहते हैं,
+        वह तारीख “Age as on Date” में दर्ज करें।
+      </p>
+
+      <h3>Step 3: उम्र निकालें</h3>
+
+      <p>
+        “मेरी उम्र निकालें” बटन पर क्लिक करें।
+        Calculator आपकी सटीक उम्र तुरंत दिखा देगा।
+      </p>
+
+      <h3>आपको क्या परिणाम मिलेगा?</h3>
+
+      <ul>
+        <li>सटीक उम्र – साल, महीने और दिन</li>
+        <li>अगले जन्मदिन की तारीख</li>
+        <li>अगले जन्मदिन में कितने दिन बाकी हैं</li>
+        <li>कुल जीवन के दिन</li>
+        <li>कुल सप्ताह</li>
+        <li>कुल महीने</li>
+        <li>कुल घंटे</li>
+        <li>कुल मिनट</li>
+        <li>कुल सेकंड</li>
+      </ul>
+
+    </section>
+
+
+    <section id="faq" class="faq-section">
+
+      <h2>❓ अक्सर पूछे जाने वाले सवाल</h2>
+
+      <details>
+        <summary>
+          Age Calculator उम्र कैसे निकालता है?
+        </summary>
+
+        <p>
+          Calculator आपकी जन्म तारीख और चुनी गई तारीख के बीच का वास्तविक
+          calendar difference निकालकर उम्र को साल, महीने और दिनों में दिखाता है।
+        </p>
+      </details>
+
+      <details>
+        <summary>
+          क्या मैं किसी पुरानी तारीख तक अपनी उम्र निकाल सकता हूँ?
+        </summary>
+
+        <p>
+          हाँ। “Age as on Date” में अपनी इच्छित तारीख दर्ज करके उस तारीख तक
+          अपनी उम्र देख सकते हैं, बशर्ते वह तारीख आपकी जन्म तारीख के बराबर
+          या उसके बाद हो।
+        </p>
+      </details>
+
+      <details>
+        <summary>
+          क्या Calculator free है?
+        </summary>
+
+        <p>
+          हाँ। यह Age Calculator मुफ्त में इस्तेमाल किया जा सकता है।
+        </p>
+      </details>
+
+      <details>
+        <summary>
+          जन्म तारीख किस format में डालनी है?
+        </summary>
+
+        <p>
+          जन्म तारीख और Age as on Date दोनों
+          <strong>DD/MM/YYYY</strong> format में दर्ज करें।
+          उदाहरण: 25/12/2000
+        </p>
+      </details>
+
+      <details>
+        <summary>
+          क्या यह Calculator मोबाइल पर काम करता है?
+        </summary>
+
+        <p>
+          हाँ। वेबसाइट responsive है और मोबाइल, टैबलेट तथा कंप्यूटर पर इस्तेमाल
+          की जा सकती है।
+        </p>
+      </details>
+
+    </section>
+
+
+    <section class="contact-strip">
+
+      <div>
+        <span>💡</span>
+
+        <div>
+          <h2>सटीक उम्र जानना अब आसान है।</h2>
+          <p>
+            जन्म तारीख डालें और तुरंत अपना Age Result देखें।
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <a href="../">
+          English Calculator →
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer class="footer">
+
+    <p>
+      © 2026 Age Calculator India. सभी अधिकार सुरक्षित।
+    </p>
+
+    <div class="socials">
+      <span>f</span>
+      <span>𝕏</span>
+      <span>in</span>
+    </div>
+
+  </footer>
+
+
+  <script src="../script.js"></script>
+
+  <script>
+    const dobInput = document.getElementById("dateOfBirth");
+
+    const originalCalculateAge = window.calculateAge;
+
+    function updateBirthDateDisplay() {
+      const value = dobInput.value;
+
+      const match = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+
+      if (match) {
+        document.getElementById("birthDateDisplay").textContent = value;
+      } else {
+        document.getElementById("birthDateDisplay").textContent = "—";
+      }
+    }
+
+    dobInput.addEventListener("input", updateBirthDateDisplay);
+
+    document.getElementById("calculateBtn").addEventListener(
+      "click",
+      updateBirthDateDisplay
+    );
+  </script>
+
+</body>
+</html>
