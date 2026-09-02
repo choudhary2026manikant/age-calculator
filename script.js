@@ -11,10 +11,10 @@ const daysElement = document.getElementById("days");
 const calculatedAsOnElement = document.getElementById("calculatedAsOn");
 const nextBirthdayElement = document.getElementById("nextBirthday");
 const daysUntilBirthdayElement = document.getElementById("daysUntilBirthday");
-const birthdayHighlightElement = document.getElementById("birthdayHighlight");
 
-const heroAgePreviewElement = document.getElementById("heroAgePreview");
-const heroBirthdayPreviewElement = document.getElementById("heroBirthdayPreview");
+const birthdayHighlight = document.getElementById("birthdayHighlight");
+const heroAgePreview = document.getElementById("heroAgePreview");
+const heroBirthdayPreview = document.getElementById("heroBirthdayPreview");
 
 const errorMessage = document.getElementById("errorMessage");
 
@@ -78,17 +78,15 @@ function formatDateInputValue(value) {
 
 
 function handleDateInput(event) {
-    event.target.value = formatDateInputValue(event.target.value);
+    const input = event.target;
+
+    input.value = formatDateInputValue(input.value);
 }
 
 
 dateOfBirthInput.addEventListener("input", handleDateInput);
 asOnDateInput.addEventListener("input", handleDateInput);
 
-
-/* =========================
-   PARSE INDIAN DATE
-========================= */
 
 function parseIndianDate(value) {
     const pattern = /^(\d{2})\/(\d{2})\/(\d{4})$/;
@@ -130,10 +128,6 @@ function parseIndianDate(value) {
 }
 
 
-/* =========================
-   MONTH DAYS
-========================= */
-
 function getDaysInMonth(year, month) {
     return new Date(
         year,
@@ -144,7 +138,7 @@ function getDaysInMonth(year, month) {
 
 
 /* =========================
-   EXACT AGE
+   AGE CALCULATION
 ========================= */
 
 function calculateExactAge(birthDate, targetDate) {
@@ -186,7 +180,6 @@ function calculateExactAge(birthDate, targetDate) {
 
     if (months < 0) {
         years--;
-
         months += 12;
     }
 
@@ -207,17 +200,16 @@ function getNextBirthday(birthDate, targetDate) {
     const birthMonth = birthDate.getMonth();
     const birthDay = birthDate.getDate();
 
-    let birthdayYear =
-        targetDate.getFullYear();
+    let birthdayYear = targetDate.getFullYear();
 
-    let birthdayDay =
-        Math.min(
-            birthDay,
-            getDaysInMonth(
-                birthdayYear,
-                birthMonth
-            )
-        );
+    let birthdayDay = Math.min(
+        birthDay,
+        getDaysInMonth(
+            birthdayYear,
+            birthMonth
+        )
+    );
+
 
     let nextBirthday = new Date(
         birthdayYear,
@@ -229,14 +221,13 @@ function getNextBirthday(birthDate, targetDate) {
     if (nextBirthday < targetDate) {
         birthdayYear++;
 
-        birthdayDay =
-            Math.min(
-                birthDay,
-                getDaysInMonth(
-                    birthdayYear,
-                    birthMonth
-                )
-            );
+        birthdayDay = Math.min(
+            birthDay,
+            getDaysInMonth(
+                birthdayYear,
+                birthMonth
+            )
+        );
 
         nextBirthday = new Date(
             birthdayYear,
@@ -251,7 +242,7 @@ function getNextBirthday(birthDate, targetDate) {
 
 
 /* =========================
-   DAYS BETWEEN
+   DATE DIFFERENCE
 ========================= */
 
 function getDaysBetween(date1, date2) {
@@ -270,12 +261,14 @@ function getDaysBetween(date1, date2) {
 ========================= */
 
 function formatNumber(number) {
-    return new Intl.NumberFormat("en-IN").format(number);
+    return new Intl.NumberFormat(
+        "en-IN"
+    ).format(number);
 }
 
 
 /* =========================
-   ERROR
+   ERROR HANDLING
 ========================= */
 
 function showError(message) {
@@ -302,20 +295,19 @@ function calculateLifeStatistics(
     const totalMilliseconds =
         targetDate - birthDate;
 
-    const totalDays =
-        Math.floor(
-            totalMilliseconds /
-            millisecondsPerDay
-        );
+    const totalDays = Math.floor(
+        totalMilliseconds /
+        millisecondsPerDay
+    );
 
-    const totalWeeks =
-        Math.floor(totalDays / 7);
+    const totalWeeks = Math.floor(
+        totalDays / 7
+    );
 
-    const age =
-        calculateExactAge(
-            birthDate,
-            targetDate
-        );
+    const age = calculateExactAge(
+        birthDate,
+        targetDate
+    );
 
     const totalMonths =
         age.years * 12 +
@@ -342,7 +334,9 @@ function calculateLifeStatistics(
 }
 
 
-function displayLifeStatistics(statistics) {
+function displayLifeStatistics(
+    statistics
+) {
     totalDaysElement.textContent =
         formatNumber(statistics.totalDays);
 
@@ -364,18 +358,17 @@ function displayLifeStatistics(statistics) {
 
 
 /* =========================
-   BIRTHDAY TEXT
+   BIRTHDAY COUNTDOWN TEXT
 ========================= */
 
-function ageToBirthdayText(
+function getBirthdayCountdownText(
     targetDate,
     nextBirthday
 ) {
-    const daysRemaining =
-        getDaysBetween(
-            targetDate,
-            nextBirthday
-        );
+    const daysRemaining = getDaysBetween(
+        targetDate,
+        nextBirthday
+    );
 
 
     if (daysRemaining === 0) {
@@ -384,28 +377,33 @@ function ageToBirthdayText(
 
 
     if (daysRemaining === 1) {
-        return "1 दिन";
+        return "🎂 सिर्फ 1 दिन बाकी";
     }
 
 
-    const months =
-        Math.floor(daysRemaining / 30);
-
-    const remainingDays =
-        daysRemaining % 30;
+    if (daysRemaining < 30) {
+        return `🎂 ${formatNumber(daysRemaining)} दिन बाकी`;
+    }
 
 
-    if (months > 0 && remainingDays > 0) {
-        return `${months} महीने ${remainingDays} दिन`;
+    const months = Math.floor(
+        daysRemaining / 30
+    );
+
+    const days = daysRemaining % 30;
+
+
+    if (months > 0 && days > 0) {
+        return `🎂 ${months} महीने ${days} दिन बाकी`;
     }
 
 
     if (months > 0) {
-        return `${months} महीने`;
+        return `🎂 ${months} महीने बाकी`;
     }
 
 
-    return `${remainingDays} दिन`;
+    return `🎂 ${formatNumber(daysRemaining)} दिन बाकी`;
 }
 
 
@@ -422,38 +420,7 @@ function setDefaultAsOnDate() {
 
 
 /* =========================
-   HERO PREVIEW
-========================= */
-
-function resetHeroPreview() {
-    heroAgePreviewElement.textContent =
-        "Your age will appear here";
-
-    heroBirthdayPreviewElement.textContent =
-        "Your next birthday will appear here";
-}
-
-
-function updateHeroPreview(
-    age,
-    nextBirthday,
-    daysRemaining
-) {
-    heroAgePreviewElement.textContent =
-        `${age.years} Years ${age.months} Months ${age.days} Days`;
-
-    if (daysRemaining === 0) {
-        heroBirthdayPreviewElement.textContent =
-            "🎉 Birthday is today!";
-    } else {
-        heroBirthdayPreviewElement.textContent =
-            `${formatNumber(daysRemaining)} days until birthday`;
-    }
-}
-
-
-/* =========================
-   CALCULATE AGE
+   MAIN CALCULATOR
 ========================= */
 
 function calculateAge() {
@@ -528,13 +495,12 @@ function calculateAge() {
     }
 
 
-    /* EXACT AGE */
+    /* AGE */
 
-    const age =
-        calculateExactAge(
-            birthDate,
-            targetDate
-        );
+    const age = calculateExactAge(
+        birthDate,
+        targetDate
+    );
 
 
     yearsElement.textContent =
@@ -551,6 +517,12 @@ function calculateAge() {
         formatDisplayDate(targetDate);
 
 
+    /* HERO PREVIEW */
+
+    heroAgePreview.textContent =
+        `${age.years}y ${age.months}m ${age.days}d`;
+
+
     /* NEXT BIRTHDAY */
 
     const nextBirthday =
@@ -564,6 +536,12 @@ function calculateAge() {
         formatDisplayDate(nextBirthday);
 
 
+    heroBirthdayPreview.textContent =
+        formatDisplayDate(nextBirthday);
+
+
+    /* BIRTHDAY COUNTDOWN */
+
     const daysRemaining =
         getDaysBetween(
             targetDate,
@@ -571,22 +549,19 @@ function calculateAge() {
         );
 
 
-    if (daysRemaining === 0) {
-        daysUntilBirthdayElement.textContent =
-            "🎉 आज आपका जन्मदिन है!";
+    const birthdayText =
+        getBirthdayCountdownText(
+            targetDate,
+            nextBirthday
+        );
 
-        birthdayHighlightElement.textContent =
-            "🎉 आज आपका जन्मदिन है!";
-    } else {
-        daysUntilBirthdayElement.textContent =
-            `${formatNumber(daysRemaining)} दिन`;
 
-        birthdayHighlightElement.textContent =
-            ageToBirthdayText(
-                targetDate,
-                nextBirthday
-            );
-    }
+    daysUntilBirthdayElement.textContent =
+        birthdayText;
+
+
+    birthdayHighlight.textContent =
+        birthdayText;
 
 
     /* LIFE STATISTICS */
@@ -600,15 +575,6 @@ function calculateAge() {
 
     displayLifeStatistics(
         statistics
-    );
-
-
-    /* HERO */
-
-    updateHeroPreview(
-        age,
-        nextBirthday,
-        daysRemaining
     );
 }
 
@@ -637,8 +603,16 @@ function resetCalculator() {
     daysUntilBirthdayElement.textContent =
         "—";
 
-    birthdayHighlightElement.textContent =
+
+    birthdayHighlight.textContent =
         "—";
+
+
+    heroAgePreview.textContent =
+        "—";
+
+    heroBirthdayPreview.textContent =
+        "Coming soon";
 
 
     totalDaysElement.textContent =
@@ -660,8 +634,6 @@ function resetCalculator() {
         "0";
 
 
-    resetHeroPreview();
-
     clearError();
 
     dateOfBirthInput.focus();
@@ -677,7 +649,6 @@ calculateBtn.addEventListener(
     calculateAge
 );
 
-
 resetBtn.addEventListener(
     "click",
     resetCalculator
@@ -685,33 +656,7 @@ resetBtn.addEventListener(
 
 
 /* =========================
-   ENTER KEY SUPPORT
-========================= */
-
-dateOfBirthInput.addEventListener(
-    "keydown",
-    function (event) {
-        if (event.key === "Enter") {
-            calculateAge();
-        }
-    }
-);
-
-
-asOnDateInput.addEventListener(
-    "keydown",
-    function (event) {
-        if (event.key === "Enter") {
-            calculateAge();
-        }
-    }
-);
-
-
-/* =========================
-   INITIAL STATE
+   INITIALIZE
 ========================= */
 
 setDefaultAsOnDate();
-
-resetHeroPreview();
