@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://choudhary2026manikant.github.io/age-calculator/sitemap.xml
