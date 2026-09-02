@@ -11,12 +11,12 @@
   >
 
   <title>
-    Age Calculator India - Exact Age in DD/MM/YYYY
+    Age Calculator India - Calculate Exact Age Online
   </title>
 
   <meta
     name="description"
-    content="Age Calculator India in DD/MM/YYYY format. Learn how to calculate exact age by date of birth, age as on a specific date, next birthday and age for forms and eligibility."
+    content="Free Age Calculator India to calculate exact age in years, months and days. Calculate age by date of birth, age as on any date, next birthday and life statistics in DD/MM/YYYY format."
   >
 
   <meta
@@ -34,31 +34,39 @@
     content="#2563eb"
   >
 
-  <link
-    rel="canonical"
-    href="https://choudhary2026manikant.github.io/age-calculator/age-calculator-india.html"
+  <meta
+    name="color-scheme"
+    content="light"
   >
 
+  <!-- Google Search Console Verification -->
+  <meta
+    name="google-site-verification"
+    content="s3xC9bFCTATFSRI-k4ival80HqZpAFnd4sQd3rwjNxg"
+  >
+
+  <!-- Open Graph -->
   <meta
     property="og:title"
-    content="Age Calculator India - Exact Age in DD/MM/YYYY"
+    content="Age Calculator India - Calculate Exact Age Online"
   >
 
   <meta
     property="og:description"
-    content="Learn how to calculate exact age in India using DD/MM/YYYY date format and age as on any date."
+    content="Calculate exact age by date of birth, age as on any date, next birthday and life statistics in DD/MM/YYYY format."
   >
 
   <meta
     property="og:type"
-    content="article"
+    content="website"
   >
 
   <meta
     property="og:url"
-    content="https://choudhary2026manikant.github.io/age-calculator/age-calculator-india.html"
+    content="https://choudhary2026manikant.github.io/age-calculator/"
   >
 
+  <!-- Twitter -->
   <meta
     name="twitter:card"
     content="summary"
@@ -66,40 +74,46 @@
 
   <meta
     name="twitter:title"
-    content="Age Calculator India - Exact Age in DD/MM/YYYY"
+    content="Age Calculator India - Calculate Exact Age Online"
   >
 
   <meta
     name="twitter:description"
-    content="Calculate and understand exact age using the Indian DD/MM/YYYY date format."
+    content="Free online age calculator for exact age, age as on date, next birthday and life statistics."
+  >
+
+  <!-- Canonical -->
+  <link
+    rel="canonical"
+    href="https://choudhary2026manikant.github.io/age-calculator/"
+  >
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎂%3C/text%3E%3C/svg%3E"
   >
 
   <!-- Structured Data -->
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Age Calculator India",
-    "description": "Guide to calculating exact age in India using date of birth, DD/MM/YYYY format and age as on a specific date.",
-    "url": "https://choudhary2026manikant.github.io/age-calculator/age-calculator-india.html"
+    "description": "Free online age calculator for calculating exact age by date of birth and age as on any date.",
+    "url": "https://choudhary2026manikant.github.io/age-calculator/"
   }
   </script>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Age Calculator India - Exact Age in DD/MM/YYYY",
-    "description": "Learn how to calculate exact age using date of birth and a selected date.",
-    "author": {
-      "@type": "Organization",
-      "name": "Age Calculator"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://choudhary2026manikant.github.io/age-calculator/age-calculator-india.html"
-    }
+    "@type": "WebApplication",
+    "name": "Age Calculator India",
+    "url": "https://choudhary2026manikant.github.io/age-calculator/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "description": "Calculate exact age in years, months and days using date of birth and a selected calculation date."
   }
   </script>
 
@@ -123,51 +137,363 @@
       <header class="header">
 
         <div class="icon">
-          🇮🇳
+          🎂
         </div>
 
         <h1>
-          Age Calculator India
+          Age Calculator
         </h1>
 
         <p>
-          Understand and calculate your exact age
-          using the Indian DD/MM/YYYY date format.
+          Calculate your exact age in years,
+          months and days.
         </p>
 
         <p class="subtitle">
-          Calculate age by date of birth,
-          age as on a specific date and more.
+          Calculate your age as on any date,
+          find your next birthday and explore
+          your life statistics.
         </p>
 
       </header>
 
 
-      <!-- MAIN CONTENT -->
+      <!-- INPUT -->
+
+      <section class="input-section">
+
+        <div class="date-field">
+
+          <label for="dateOfBirth">
+            Date of Birth (DD/MM/YYYY)
+          </label>
+
+          <input
+            type="text"
+            id="dateOfBirth"
+            placeholder="DD/MM/YYYY"
+            maxlength="10"
+            autocomplete="off"
+          >
+
+        </div>
+
+
+        <div class="date-field">
+
+          <label for="asOnDate">
+            Age as on Date (DD/MM/YYYY)
+          </label>
+
+          <input
+            type="text"
+            id="asOnDate"
+            placeholder="DD/MM/YYYY"
+            maxlength="10"
+            autocomplete="off"
+          >
+
+          <p class="field-help">
+            Leave this as today to calculate your current age.
+          </p>
+
+        </div>
+
+
+        <div class="button-group">
+
+          <button
+            type="button"
+            id="calculateBtn"
+          >
+            Calculate Age
+          </button>
+
+          <button
+            type="button"
+            id="resetBtn"
+            class="reset-button"
+          >
+            Reset
+          </button>
+
+        </div>
+
+
+        <p
+          id="errorMessage"
+          class="error-message"
+          aria-live="polite"
+        ></p>
+
+      </section>
+
+
+      <!-- AGE RESULT -->
+
+      <section class="result-section">
+
+        <h2>
+          Your Exact Age
+        </h2>
+
+        <p class="result-date">
+          Age calculated as on
+          <strong id="calculatedAsOn">
+            —
+          </strong>
+        </p>
+
+
+        <div class="age-grid">
+
+          <div class="age-box">
+
+            <span id="years">
+              0
+            </span>
+
+            <small>
+              Years
+            </small>
+
+            <strong>
+              साल
+            </strong>
+
+          </div>
+
+
+          <div class="age-box">
+
+            <span id="months">
+              0
+            </span>
+
+            <small>
+              Months
+            </small>
+
+            <strong>
+              महीने
+            </strong>
+
+          </div>
+
+
+          <div class="age-box">
+
+            <span id="days">
+              0
+            </span>
+
+            <small>
+              Days
+            </small>
+
+            <strong>
+              दिन
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="details">
+
+          <div class="detail-item">
+
+            <span>
+              🎉 Next Birthday
+            </span>
+
+            <strong id="nextBirthday">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span>
+              📅 Days Until Birthday
+            </span>
+
+            <strong id="daysUntilBirthday">
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- LIFE STATISTICS -->
+
+      <section class="statistics-section">
+
+        <h2>
+          Life Statistics
+        </h2>
+
+        <p class="statistics-subtitle">
+          Approximate time lived based on your
+          selected calculation date.
+        </p>
+
+
+        <div class="statistics-grid">
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              📅
+            </div>
+
+            <span
+              class="stat-value"
+              id="totalDays"
+            >
+              0
+            </span>
+
+            <span class="stat-label">
+              Total Days
+            </span>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              📆
+            </div>
+
+            <span
+              class="stat-value"
+              id="totalWeeks"
+            >
+              0
+            </span>
+
+            <span class="stat-label">
+              Total Weeks
+            </span>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              🗓️
+            </div>
+
+            <span
+              class="stat-value"
+              id="totalMonths"
+            >
+              0
+            </span>
+
+            <span class="stat-label">
+              Total Months
+            </span>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              ⏰
+            </div>
+
+            <span
+              class="stat-value"
+              id="totalHours"
+            >
+              0
+            </span>
+
+            <span class="stat-label">
+              Total Hours
+            </span>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              ⏱️
+            </div>
+
+            <span
+              class="stat-value"
+              id="totalMinutes"
+            >
+              0
+            </span>
+
+            <span class="stat-label">
+              Total Minutes
+            </span>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              ⚡
+            </div>
+
+            <span
+              class="stat-value"
+              id="totalSeconds"
+            >
+              0
+            </span>
+
+            <span class="stat-label">
+              Total Seconds
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- INDIA SEO CONTENT -->
 
       <section class="content-section">
 
         <h2>
-          What Is an Age Calculator in India?
+          Age Calculator India
         </h2>
 
         <p>
-          An age calculator is an online tool that
-          calculates the difference between a person's
-          date of birth and a selected date.
+          This free Age Calculator India helps you
+          calculate your exact age from your date of
+          birth. Enter your date of birth in the
+          Indian DD/MM/YYYY format to find your age
+          in complete years, months and days.
         </p>
 
         <p>
-          In India, dates are commonly written in
-          DD/MM/YYYY format. For example,
-          15 August 1995 can be written as
-          15/08/1995.
-        </p>
-
-        <p>
-          An exact age calculator can show the result
-          in complete years, months and days instead
-          of showing only the number of years.
+          You can also choose a specific
+          "Age as on Date" to calculate how old you
+          were on a particular date. The calculator
+          works directly in your browser and does not
+          require you to create an account.
         </p>
 
       </section>
@@ -176,27 +502,23 @@
       <section class="content-section">
 
         <h2>
-          Calculate Your Exact Age
+          Age Calculator by Date of Birth
         </h2>
 
         <p>
-          Use our free
-          <a href="index.html">
-            Age Calculator
-          </a>
-          to calculate your exact age online.
+          An age calculator by date of birth
+          determines the difference between your
+          birth date and a selected calculation date.
+          Instead of showing only the number of years,
+          this calculator provides the exact difference
+          in years, months and days.
         </p>
 
         <p>
-          Enter your Date of Birth in DD/MM/YYYY
-          format and select the date on which you
-          want to calculate your age.
-        </p>
-
-        <p>
-          The calculator can show your age in
-          years, months and days, along with your
-          next birthday and approximate life statistics.
+          For example, if your date of birth is
+          15/08/1995, you can enter that date and
+          calculate your exact age as of today or
+          as of any other date you choose.
         </p>
 
       </section>
@@ -205,33 +527,81 @@
       <section class="content-section">
 
         <h2>
-          How to Calculate Age by Date of Birth
+          Age Calculator in DD/MM/YYYY Format
         </h2>
 
         <p>
-          Calculating age from a date of birth involves
-          comparing the birth date with the date on
-          which the age needs to be calculated.
+          The calculator uses the DD/MM/YYYY date
+          format commonly used in India. For example,
+          25 December 1990 should be entered as
+          25/12/1990.
+        </p>
+
+        <p>
+          The date fields automatically format your
+          entry with slashes, making it easier to enter
+          an Indian-style date correctly.
+        </p>
+
+      </section>
+
+
+      <section class="content-section">
+
+        <h2>
+          Age as on Date Calculator
+        </h2>
+
+        <p>
+          "Age as on Date" means calculating your age
+          on a particular date rather than only on
+          today's date.
+        </p>
+
+        <p>
+          This can be useful when checking age for
+          forms, applications, eligibility dates,
+          records, admission-related information and
+          other situations where an age needs to be
+          calculated for a particular date.
+        </p>
+
+      </section>
+
+
+      <section class="content-section">
+
+        <h2>
+          How to Calculate Your Age
+        </h2>
+
+        <p>
+          To calculate your exact age, follow these
+          simple steps:
         </p>
 
         <ol>
 
           <li>
-            Enter your date of birth in DD/MM/YYYY format.
+            Enter your Date of Birth in DD/MM/YYYY format.
           </li>
 
           <li>
-            Enter the date on which you want to calculate
-            your age.
+            Enter the Age as on Date.
           </li>
 
           <li>
-            Calculate the difference between the two dates.
+            Click the Calculate Age button.
           </li>
 
           <li>
-            The result can be expressed in complete
-            years, months and remaining days.
+            Your exact age will be displayed in years,
+            months and days.
+          </li>
+
+          <li>
+            You can also see your next birthday,
+            days until your birthday and life statistics.
           </li>
 
         </ol>
@@ -242,25 +612,20 @@
       <section class="content-section">
 
         <h2>
-          What Does Age as on Date Mean?
+          What Is an Age Calculator?
         </h2>
 
         <p>
-          "Age as on Date" means finding a person's age
-          on a particular date rather than only calculating
-          their current age.
+          An age calculator is an online utility that
+          calculates a person's age from their date of
+          birth to a selected date.
         </p>
 
         <p>
-          For example, someone may want to know their
-          exact age on 01/01/2027 even though the
-          calculation is being performed on a different date.
-        </p>
-
-        <p>
-          This type of calculation can be useful when
-          a form, application or record asks for age
-          on a particular date.
+          A simple year-only calculation may not show
+          the complete difference between two dates.
+          An exact age calculator can break the result
+          into complete years, months and remaining days.
         </p>
 
       </section>
@@ -269,126 +634,29 @@
       <section class="content-section">
 
         <h2>
-          DD/MM/YYYY Date Format in India
+          How Does This Age Calculator Work?
         </h2>
 
         <p>
-          The DD/MM/YYYY format places the day first,
-          followed by the month and then the year.
+          The calculator compares your date of birth
+          with the selected calculation date.
         </p>
 
         <p>
-          Examples:
-        </p>
-
-        <ol>
-
-          <li>
-            5 January 2000 → 05/01/2000
-          </li>
-
-          <li>
-            15 August 1995 → 15/08/1995
-          </li>
-
-          <li>
-            26 January 1990 → 26/01/1990
-          </li>
-
-        </ol>
-
-        <p>
-          When entering a date, make sure that the
-          day and month are valid. For example,
-          31/02/2000 is not a valid calendar date.
-        </p>
-
-      </section>
-
-
-      <section class="content-section">
-
-        <h2>
-          Age Calculation for Forms and Eligibility
-        </h2>
-
-        <p>
-          Age calculations are often needed when
-          completing applications, registrations,
-          records or other documents that require
-          a person's date of birth or age.
+          The difference is calculated as complete
+          years, complete months and remaining days.
         </p>
 
         <p>
-          Some situations may require an age to be
-          determined on a particular cutoff date.
-          In such cases, an "Age as on Date"
-          calculation can be more useful than simply
-          checking the current age.
+          The calculator also determines the next
+          birthday relative to the selected date.
         </p>
 
         <p>
-          Always follow the specific age or eligibility
-          rules stated by the relevant organization,
-          examination authority or application form.
-        </p>
-
-      </section>
-
-
-      <section class="content-section">
-
-        <h2>
-          Example of Exact Age Calculation
-        </h2>
-
-        <p>
-          Suppose a person's date of birth is
-          15/08/1995 and the selected calculation
-          date is 15/08/2025.
-        </p>
-
-        <p>
-          On that date, the person has completed
-          exactly 30 years.
-        </p>
-
-        <p>
-          If the calculation date is changed to
-          20/09/2025, the result becomes
-          30 years, 1 month and 5 days.
-        </p>
-
-        <p>
-          The exact result depends on the two dates
-          entered into the calculator.
-        </p>
-
-      </section>
-
-
-      <section class="content-section">
-
-        <h2>
-          Why Use an Online Age Calculator?
-        </h2>
-
-        <p>
-          Manually calculating age can be inconvenient,
-          especially when months and days need to be
-          calculated accurately.
-        </p>
-
-        <p>
-          An online age calculator can quickly compare
-          two dates and present the result in an easy
-          format.
-        </p>
-
-        <p>
-          Our calculator also provides the next birthday,
-          days until the birthday and approximate life
-          statistics.
+          Life statistics such as total days, weeks,
+          hours, minutes and seconds are approximate
+          calculations based on the total number of
+          completed days between the two dates.
         </p>
 
       </section>
@@ -406,13 +674,13 @@
         <details>
 
           <summary>
-            What date format does the calculator use?
+            How accurate is this age calculator?
           </summary>
 
           <p>
-            The calculator uses DD/MM/YYYY format.
-            For example, 25 December 1990 is entered
-            as 25/12/1990.
+            The calculator uses your date of birth
+            and selected calculation date to calculate
+            your age in complete years, months and days.
           </p>
 
         </details>
@@ -421,27 +689,12 @@
         <details>
 
           <summary>
-            Can I calculate my exact age in years, months and days?
-          </summary>
-
-          <p>
-            Yes. The calculator can display your age
-            as complete years, months and remaining days.
-          </p>
-
-        </details>
-
-
-        <details>
-
-          <summary>
-            Can I calculate age as on a specific date?
+            Can I calculate my age as on a specific date?
           </summary>
 
           <p>
             Yes. Enter your date of birth and select
-            the date on which you want to calculate
-            your age.
+            the date on which you want to know your age.
           </p>
 
         </details>
@@ -450,11 +703,12 @@
         <details>
 
           <summary>
-            Is the Age Calculator free?
+            Does this calculator use DD/MM/YYYY format?
           </summary>
 
           <p>
-            Yes. The online age calculator is free to use.
+            Yes. The date fields use the DD/MM/YYYY
+            format, which is commonly used in India.
           </p>
 
         </details>
@@ -463,14 +717,13 @@
         <details>
 
           <summary>
-            Is my date of birth sent to a server?
+            Can I calculate my age in days?
           </summary>
 
           <p>
-            The calculator performs the calculation
-            directly in your browser and does not
-            require your date of birth to be submitted
-            to a server.
+            Yes. The Life Statistics section shows
+            the approximate total number of days
+            between your birth date and calculation date.
           </p>
 
         </details>
@@ -479,19 +732,114 @@
         <details>
 
           <summary>
-            Can this calculator determine eligibility?
+            Can I find my next birthday?
           </summary>
 
           <p>
-            The calculator can help determine age on
-            a selected date, but eligibility depends
-            on the official rules and cutoff dates
-            specified by the relevant organization.
+            Yes. The calculator automatically shows
+            your next birthday and the number of days
+            remaining from the selected calculation date.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Is this age calculator free?
+          </summary>
+
+          <p>
+            Yes. This online age calculator is free to use.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Does the calculator store my date of birth?
+          </summary>
+
+          <p>
+            No information needs to be sent to a server
+            for the calculation. The age calculation is
+            performed directly in your browser.
           </p>
 
         </details>
 
       </section>
+
+
+      <!-- FAQ STRUCTURED DATA -->
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How accurate is this age calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The calculator uses your date of birth and selected calculation date to calculate your age in complete years, months and days."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I calculate my age as on a specific date?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Enter your date of birth and select the date on which you want to know your age."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this calculator use DD/MM/YYYY format?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The date fields use the DD/MM/YYYY format, which is commonly used in India."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I calculate my age in days?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The Life Statistics section shows the approximate total number of days between your birth date and calculation date."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I find my next birthday?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The calculator automatically shows your next birthday and the number of days remaining from the selected calculation date."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this age calculator free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. This online age calculator is free to use."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the calculator store my date of birth?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No information needs to be sent to a server. The calculation is performed directly in the browser."
+            }
+          }
+        ]
+      }
+      </script>
 
 
       <!-- FOOTER -->
@@ -504,9 +852,8 @@
         </p>
 
         <p>
-          <a href="index.html">
-            Back to Age Calculator
-          </a>
+          Free online age calculator for
+          calculating exact age and age as on any date.
         </p>
 
       </footer>
@@ -514,6 +861,9 @@
     </div>
 
   </main>
+
+
+  <script src="script.js"></script>
 
 </body>
 
