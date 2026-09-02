@@ -1111,7 +1111,7 @@ body {
     display: block;
     text-align: center;
     padding: 20px;
-  }
+  }z
 
   .socials {
     justify-content: center;
@@ -1119,229 +1119,285 @@ body {
   }
 }
 
-/* =========================================================
-   PREMIUM VISUAL UPGRADE — ORIGINAL LAYOUT PRESERVED
-   ========================================================= */
+/* ================================================================
+   SIR TYPOGRAPHY MAX + GOLD OUTLINE EDITION
+   Existing layout preserved. Typography is intentionally larger.
+   ================================================================ */
 
 :root {
-  --premium-shadow: 0 22px 60px rgba(29, 43, 76, 0.11);
-  --premium-shadow-soft: 0 12px 34px rgba(29, 43, 76, 0.08);
-  --premium-radius: 18px;
+  --gold-main: #d4af37;
+  --gold-light: #f4d76b;
+  --gold-dark: #9f7a16;
+  --gold-soft: rgba(212, 175, 55, 0.22);
 }
 
+/* Global readable typography */
 body {
-  background:
-    radial-gradient(circle at 8% 8%, rgba(8, 127, 245, 0.07), transparent 24%),
-    radial-gradient(circle at 92% 18%, rgba(236, 72, 153, 0.055), transparent 24%),
-    linear-gradient(180deg, #fbfdff 0%, #f6f9ff 48%, #ffffff 100%);
+  font-size: 18px !important;
 }
 
-.topbar {
-  min-height: 76px;
-  background: rgba(255, 255, 255, 0.94);
-  border-bottom-color: rgba(220, 227, 239, 0.85);
-  box-shadow: 0 8px 28px rgba(25, 42, 72, 0.06);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+/* Header / navigation */
+.brand strong {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  -webkit-text-stroke: 0.55px var(--gold-main);
+  text-shadow: 0 2px 8px rgba(212,175,55,.18);
 }
 
-.brand {
-  transition: transform 0.22s ease;
-}
-
-.brand:hover {
-  transform: translateY(-1px);
-}
-
-.brand-icon {
-  border-radius: 14px;
-  background: linear-gradient(135deg, #08b86a 0%, #087ff5 52%, #7c2ff3 100%);
-  box-shadow: 0 10px 24px rgba(8, 127, 245, 0.20);
+.brand small {
+  font-size: 13px !important;
 }
 
 .nav-links a {
-  position: relative;
+  font-size: 16px !important;
+  font-weight: 850 !important;
 }
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 5px;
-  height: 2px;
-  border-radius: 99px;
-  background: linear-gradient(90deg, #087ff5, #8b21d7);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.2s ease;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  transform: scaleX(1);
-}
-
-#languageSelector {
-  transition: 0.2s ease;
-  box-shadow: 0 4px 14px rgba(30, 47, 79, 0.04);
-}
-
-#languageSelector:hover {
-  border-color: #c8d3e4;
-  box-shadow: 0 7px 18px rgba(30, 47, 79, 0.08);
-}
-
-.hero-shell {
-  max-width: 1280px;
-  padding-top: 68px;
-  padding-bottom: 64px;
-  background:
-    radial-gradient(circle at 5% 22%, rgba(8, 127, 245, 0.13), transparent 30%),
-    radial-gradient(circle at 96% 15%, rgba(236, 72, 153, 0.10), transparent 28%),
-    radial-gradient(circle at 60% 100%, rgba(124, 47, 243, 0.07), transparent 28%),
-    linear-gradient(135deg, #f9fcff 0%, #ffffff 62%, #fbf9ff 100%);
-}
-
-.hero-shell::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -1px;
-  width: 78%;
-  height: 1px;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, transparent, rgba(124, 47, 243, 0.18), rgba(8, 127, 245, 0.18), transparent);
-}
-
+/* Hero typography */
 .hero-copy h1 {
-  max-width: 760px;
-  text-wrap: balance;
+  font-size: clamp(48px, 6vw, 78px) !important;
+  line-height: 1.04 !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.035em !important;
+  -webkit-text-stroke: 1.05px var(--gold-main);
+  text-shadow:
+    0 3px 18px rgba(212,175,55,.18),
+    0 1px 0 rgba(255,255,255,.9);
+}
+
+.hero-copy h1 span {
+  -webkit-text-stroke: 1.1px var(--gold-main) !important;
+  text-shadow: 0 4px 20px rgba(212,175,55,.22);
 }
 
 .hero-copy > p {
-  line-height: 1.75;
+  font-size: 20px !important;
+  line-height: 1.75 !important;
 }
 
-.trust-pill {
-  border: 1px solid rgba(16, 168, 91, 0.13);
-  box-shadow: 0 8px 20px rgba(16, 168, 91, 0.08);
+.mini-feature b {
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  -webkit-text-stroke: 0.35px var(--gold-main);
 }
 
-.feature-strip {
-  gap: 12px;
+.mini-feature small {
+  font-size: 12px !important;
 }
 
-.mini-feature {
-  min-height: 62px;
-  border-radius: 13px;
-  border-color: rgba(218, 226, 239, 0.92);
-  box-shadow: var(--premium-shadow-soft);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-}
-
-.mini-feature:hover {
-  transform: translateY(-4px);
-  border-color: rgba(8, 127, 245, 0.18);
-  box-shadow: 0 18px 34px rgba(29, 43, 76, 0.12);
-}
-
-.mini-feature > span {
-  background: linear-gradient(135deg, #eef8ff, #f5efff);
-}
-
-.calculator-panel {
-  border-radius: 22px;
-  border-color: rgba(213, 222, 236, 0.95);
-  padding: 28px 30px;
-  box-shadow: var(--premium-shadow);
-  background:
-    linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(135deg, rgba(8, 127, 245, 0.25), rgba(124, 47, 243, 0.20), rgba(16, 168, 91, 0.18)) border-box;
-  border: 1px solid transparent;
+/* Calculator panel */
+.panel-title > span {
+  font-size: 31px !important;
 }
 
 .panel-title h2 {
-  letter-spacing: -0.025em;
-}
-
-.panel-title > span {
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #eaf8f1, #edf7ff);
-  box-shadow: inset 0 0 0 1px rgba(8, 127, 245, 0.06);
-}
-
-.accent-line {
-  height: 3px;
-  border-radius: 99px;
-  background: linear-gradient(90deg, #10a85b, #22c77a, #087ff5, #8b21d7);
+  font-size: 30px !important;
+  font-weight: 950 !important;
+  -webkit-text-stroke: 0.75px var(--gold-main);
+  text-shadow: 0 3px 14px rgba(212,175,55,.18);
 }
 
 .date-field label {
-  letter-spacing: 0.01em;
+  font-size: 17px !important;
+  font-weight: 900 !important;
+  -webkit-text-stroke: 0.35px var(--gold-main);
 }
 
 .date-field input {
-  height: 50px;
-  border-radius: 12px;
-  border-color: #d8e0eb;
-  background: #fbfdff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease;
-}
-
-.date-field input:hover {
-  border-color: #c7d3e3;
-  background: #ffffff;
-}
-
-.date-field input:focus {
-  background: #ffffff;
-  border-color: #7c2ff3;
-  box-shadow: 0 0 0 4px rgba(124, 47, 243, 0.10), 0 8px 22px rgba(70, 73, 226, 0.06);
+  height: 56px !important;
+  font-size: 20px !important;
+  font-weight: 650 !important;
+  border: 2px solid #d8c37b !important;
+  border-radius: 12px !important;
 }
 
 .field-help {
-  border: 1px solid rgba(16, 168, 91, 0.10);
+  font-size: 14px !important;
 }
 
 .button-group button {
-  border-radius: 12px;
-  min-height: 50px;
-}
-
-.button-group button:first-child {
-  background: linear-gradient(100deg, #087ff5 0%, #4659ee 48%, #8b21d7 100%);
-  box-shadow: 0 12px 25px rgba(70, 73, 226, 0.23);
-}
-
-.button-group button:first-child:hover {
-  box-shadow: 0 16px 30px rgba(70, 73, 226, 0.28);
-}
-
-.button-group .reset-button {
-  border: 1px solid #e2e7ef;
-  background: #f7f9fc;
-  transition: 0.2s ease;
-}
-
-.button-group .reset-button:hover {
-  background: #ffffff;
-  border-color: #cfd8e6;
+  min-height: 56px !important;
+  font-size: 18px !important;
+  font-weight: 950 !important;
+  border: 2px solid var(--gold-main) !important;
+  box-shadow: 0 8px 20px rgba(212,175,55,.18);
 }
 
 .error-message {
-  border-radius: 9px;
+  font-size: 15px !important;
 }
 
-.results-wrap {
-  max-width: 1180px;
-  gap: 24px;
+/* Result section headings */
+.section-ribbon {
+  font-size: 21px !important;
+  font-weight: 950 !important;
+  letter-spacing: .01em;
+  -webkit-text-stroke: 0.5px var(--gold-light);
 }
 
+.result-date {
+  font-size: 18px !important;
+}
+
+.result-date strong,
+.detail-item strong,
+.detail-item span {
+  font-size: 19px !important;
+}
+
+/* HUGE exact-age numbers with gold outline */
+.age-box {
+  border: 2px solid rgba(212,175,55,.62) !important;
+  box-shadow:
+    0 10px 28px rgba(212,175,55,.13),
+    inset 0 0 0 1px rgba(212,175,55,.18);
+}
+
+.age-box span:first-child,
+.age-box .value,
+.age-box > span[id] {
+  font-size: clamp(58px, 7vw, 88px) !important;
+  line-height: 1 !important;
+  font-weight: 1000 !important;
+  color: #14213d !important;
+  -webkit-text-stroke: 1.15px var(--gold-main) !important;
+  text-shadow:
+    0 4px 18px rgba(212,175,55,.24),
+    0 1px 0 #fff;
+}
+
+.age-box small,
+.age-box strong {
+  font-size: 17px !important;
+  font-weight: 900 !important;
+  -webkit-text-stroke: 0.45px var(--gold-main);
+}
+
+/* Birthday card */
+.birthday-card {
+  border: 2px solid rgba(212,175,55,.62) !important;
+}
+
+.birthday-body p {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+}
+
+#birthdayHighlight {
+  display: block;
+  font-size: clamp(30px, 4vw, 48px) !important;
+  line-height: 1.15 !important;
+  font-weight: 1000 !important;
+  -webkit-text-stroke: 0.95px var(--gold-main) !important;
+  text-shadow: 0 4px 18px rgba(212,175,55,.2);
+}
+
+#birthdayDate,
+#daysUntilBirthday,
+.birthday-body > div:first-child > span {
+  font-size: 19px !important;
+  font-weight: 850 !important;
+}
+
+#daysUntilBirthday {
+  -webkit-text-stroke: 0.6px var(--gold-main) !important;
+}
+
+/* Statistics */
+.statistics-section {
+  border: 2px solid rgba(212,175,55,.55) !important;
+}
+
+.statistics-section .section-heading h2 {
+  font-size: 32px !important;
+  font-weight: 950 !important;
+  -webkit-text-stroke: 0.75px var(--gold-main);
+}
+
+.statistics-subtitle {
+  font-size: 18px !important;
+}
+
+.stat-card {
+  border: 2px solid rgba(212,175,55,.45) !important;
+}
+
+.stat-value,
+.statistics-grid .stat-value {
+  display: block;
+  font-size: clamp(28px, 4vw, 43px) !important;
+  line-height: 1.15 !important;
+  font-weight: 1000 !important;
+  color: #14213d !important;
+  -webkit-text-stroke: 0.9px var(--gold-main) !important;
+  text-shadow: 0 3px 15px rgba(212,175,55,.18);
+}
+
+.stat-label {
+  font-size: 15px !important;
+  font-weight: 850 !important;
+}
+
+/* Information cards */
+.info-card {
+  border: 2px solid rgba(212,175,55,.45) !important;
+}
+
+.info-card h2 {
+  font-size: 25px !important;
+  line-height: 1.3 !important;
+  font-weight: 950 !important;
+  -webkit-text-stroke: 0.6px var(--gold-main);
+}
+
+.info-card li,
+.info-card p {
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
+
+/* How-to / content */
+.content-section {
+  border: 2px solid rgba(212,175,55,.45) !important;
+}
+
+.content-section h2 {
+  font-size: 30px !important;
+  font-weight: 950 !important;
+  -webkit-text-stroke: 0.7px var(--gold-main);
+}
+
+.content-section p,
+.content-section li {
+  font-size: 18px !important;
+  line-height: 1.85 !important;
+}
+
+/* FAQ */
+.faq-section {
+  border: 2px solid rgba(212,175,55,.45) !important;
+}
+
+.faq-section h2 {
+  font-size: 30px !important;
+  font-weight: 950 !important;
+  -webkit-text-stroke: 0.7px var(--gold-main);
+}
+
+.faq-section summary {
+  font-size: 19px !important;
+  line-height: 1.5 !important;
+  font-weight: 900 !important;
+  -webkit-text-stroke: 0.45px var(--gold-main);
+}
+
+.faq-section p {
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
+
+/* Gold border around major cards */
+.calculator-panel,
 .result-section,
 .birthday-card,
 .statistics-section,
@@ -1349,325 +1405,93 @@ body {
 .content-section,
 .faq-section,
 .contact-strip {
-  border-color: rgba(220, 227, 239, 0.95);
-  box-shadow: var(--premium-shadow-soft);
+  border-color: rgba(212,175,55,.58) !important;
 }
 
-.exact-card,
-.birthday-card {
-  border-radius: var(--premium-radius);
-}
-
-.section-ribbon {
-  padding: 12px 18px;
-  letter-spacing: 0.01em;
-}
-
-.section-ribbon.green {
-  background: linear-gradient(100deg, #0a9f56, #18b86a, #22c77a);
-}
-
-.section-ribbon.orange {
-  background: linear-gradient(100deg, #f59e0b, #ffad16, #ff8b22);
-}
-
-.result-date {
-  margin: 15px 0;
-}
-
-.age-grid {
-  gap: 13px;
-}
-
-.age-box {
-  min-height: 116px;
-  border-radius: 14px;
-  border-color: #dfe6f0;
-  box-shadow: 0 8px 20px rgba(29, 43, 76, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.age-box:hover {
-  transform: translateY(-3px);
-  border-color: #cbd7e7;
-  box-shadow: 0 14px 28px rgba(29, 43, 76, 0.09);
-}
-
-.age-box:nth-child(1) {
-  background: linear-gradient(145deg, #ffffff, #effff7);
-}
-
-.age-box:nth-child(2) {
-  background: linear-gradient(145deg, #ffffff, #f4efff);
-}
-
-.age-box:nth-child(3) {
-  background: linear-gradient(145deg, #ffffff, #eef8ff);
-}
-
-.age-box span {
-  font-size: 36px;
-  letter-spacing: -0.035em;
-}
-
-.detail-item {
-  border-top-color: #e8edf4;
-}
-
-.birthday-body {
-  min-height: 175px;
-  padding: 28px;
-  background: linear-gradient(135deg, #ffffff 0%, #fffaf6 100%);
-}
-
-.birthday-body > div:first-child > strong {
-  font-size: 23px;
-  letter-spacing: -0.02em;
-}
-
-.cake {
-  font-size: 78px;
-  animation: cakeFloat 3.2s ease-in-out infinite;
-}
-
-@keyframes cakeFloat {
-  0%, 100% { transform: translateY(0) rotate(-1deg); }
-  50% { transform: translateY(-5px) rotate(1deg); }
-}
-
-.statistics-section {
-  border-radius: var(--premium-radius);
-  padding: 24px 26px;
-}
-
-.statistics-section .section-heading h2 {
-  letter-spacing: -0.02em;
-}
-
-.stat-card {
-  padding: 13px 8px;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-3px);
-}
-
-.stat-icon {
-  box-shadow: 0 7px 15px rgba(29, 43, 76, 0.07);
-}
-
-.stat-value {
-  letter-spacing: -0.025em;
-}
-
-.info-grid {
-  gap: 16px;
-}
-
-.info-card {
-  min-height: 195px;
-  border-radius: 16px;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-}
-
-.info-card:hover {
-  transform: translateY(-4px);
-  border-color: #d5dfec;
-  box-shadow: 0 18px 38px rgba(29, 43, 76, 0.10);
-}
-
-.info-card h2 {
-  letter-spacing: -0.015em;
-}
-
-.decor {
-  filter: saturate(1.1);
-}
-
-.content-section,
-.faq-section {
-  border-radius: 16px;
-}
-
-.content-section h2,
-.faq-section h2 {
-  letter-spacing: -0.025em;
-}
-
-.faq-section details {
-  padding: 17px 5px;
-}
-
-.faq-section summary {
-  list-style: none;
-  position: relative;
-  padding-right: 30px;
-  transition: color 0.2s ease;
-}
-
-.faq-section summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq-section summary::after {
-  content: "+";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 25px;
-  height: 25px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #eef4ff;
-  color: #087ff5;
-  font-size: 17px;
-  font-weight: 900;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.faq-section details[open] summary {
-  color: #087ff5;
-}
-
-.faq-section details[open] summary::after {
-  content: "−";
-  transform: translateY(-50%) rotate(180deg);
-  background: #f1eaff;
-  color: #7c2ff3;
-}
-
-.faq-section p {
-  line-height: 1.75;
-}
-
-.contact-strip {
-  border-radius: 16px;
-  box-shadow: var(--premium-shadow-soft);
-}
-
-.contact-strip a {
-  border-radius: 11px;
-  box-shadow: 0 10px 22px rgba(70, 73, 226, 0.18);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.contact-strip a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(70, 73, 226, 0.24);
-}
-
-.footer {
-  margin-top: 38px;
-  background: linear-gradient(100deg, #087ff5 0%, #4659ee 50%, #7437f2 100%);
-  box-shadow: 0 -10px 35px rgba(42, 72, 170, 0.10);
-}
-
-.socials span {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.socials span:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 7px 16px rgba(255, 255, 255, 0.20);
-}
-
-.translation-status {
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(10px);
-}
-
-@media (max-width: 1000px) {
-  .hero-shell {
-    padding-top: 52px;
-    padding-bottom: 48px;
-  }
-
-  .calculator-panel {
-    max-width: 720px;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .results-wrap {
-    gap: 18px;
-  }
-}
-
+/* Mobile: still large, but safe */
 @media (max-width: 700px) {
-  .topbar {
-    min-height: 66px;
+  body {
+    font-size: 17px !important;
   }
 
-  .hero-shell {
-    padding-top: 34px;
-    padding-bottom: 28px;
+  .brand strong {
+    font-size: 19px !important;
+  }
+
+  .nav-links a {
+    font-size: 14px !important;
   }
 
   .hero-copy h1 {
-    font-size: 38px;
-    line-height: 1.04;
+    font-size: clamp(42px, 12vw, 62px) !important;
+    -webkit-text-stroke: 0.9px var(--gold-main) !important;
   }
 
-  .feature-strip {
-    gap: 9px;
-  }
-
-  .calculator-panel {
-    padding: 18px;
-    border-radius: 18px;
+  .hero-copy > p {
+    font-size: 18px !important;
   }
 
   .panel-title h2 {
-    font-size: 21px;
+    font-size: 25px !important;
   }
 
-  .panel-title > span {
-    width: 42px;
-    height: 42px;
+  .date-field label {
+    font-size: 16px !important;
   }
 
   .date-field input {
-    height: 48px;
+    height: 54px !important;
+    font-size: 18px !important;
   }
 
-  .age-box {
-    min-height: 104px;
-    padding: 13px 6px;
+  .button-group button {
+    min-height: 54px !important;
+    font-size: 17px !important;
   }
 
-  .age-box span {
-    font-size: 27px;
+  .section-ribbon {
+    font-size: 18px !important;
   }
 
-  .birthday-body {
-    min-height: 150px;
-    padding: 21px;
+  .age-box span:first-child,
+  .age-box .value,
+  .age-box > span[id] {
+    font-size: clamp(42px, 13vw, 64px) !important;
   }
 
-  .cake {
-    font-size: 60px;
+  .age-box small,
+  .age-box strong {
+    font-size: 15px !important;
   }
 
-  .statistics-section {
-    border-radius: 15px;
+  #birthdayHighlight {
+    font-size: clamp(27px, 8vw, 38px) !important;
   }
 
-  .info-card {
-    min-height: 170px;
+  .statistics-section .section-heading h2,
+  .content-section h2,
+  .faq-section h2 {
+    font-size: 25px !important;
+  }
+
+  .stat-value,
+  .statistics-grid .stat-value {
+    font-size: clamp(25px, 9vw, 35px) !important;
+  }
+
+  .info-card h2 {
+    font-size: 21px !important;
+  }
+
+  .info-card li,
+  .info-card p,
+  .content-section p,
+  .content-section li,
+  .faq-section p {
+    font-size: 16px !important;
+  }
+
+  .faq-section summary {
+    font-size: 17px !important;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
