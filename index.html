@@ -1,42 +1,137 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
 
-    <title>Age Calculator</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <!-- हमारी CSS file -->
-    <link rel="stylesheet" href="style.css">
+  <meta
+    name="description"
+    content="Calculate your exact age in years, months and days with our free online age calculator."
+  >
+
+  <title>Age Calculator - Calculate Your Exact Age</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <main class="container">
+  <main class="page">
+
+    <section class="calculator-card">
+
+      <header class="header">
+        <div class="icon">🎂</div>
 
         <h1>Age Calculator</h1>
 
-        <p class="description">
-            अपनी जन्म तारीख डालकर अपनी सही उम्र जानें।
+        <p>
+          अपनी जन्म तारीख डालकर अपनी सही उम्र जानें।
         </p>
 
-        <label for="birthDate">
-            Date of Birth
+        <p class="subtitle">
+          Calculate your exact age in years, months and days.
+        </p>
+      </header>
+
+
+      <section class="input-section">
+
+        <label for="dateOfBirth">
+          Date of Birth
         </label>
 
-        <input type="date" id="birthDate">
+        <input
+          type="date"
+          id="dateOfBirth"
+          aria-label="Date of Birth"
+        >
 
-        <button type="button">
-            Calculate Age
+        <button
+          type="button"
+          id="calculateBtn"
+        >
+          Calculate Age
         </button>
 
-        <div class="result">
-            <p>आपकी उम्र यहाँ दिखाई जाएगी।</p>
+      </section>
+
+
+      <p
+        id="errorMessage"
+        class="error-message"
+        role="alert"
+      ></p>
+
+
+      <section
+        id="result"
+        class="result-section"
+        aria-live="polite"
+      >
+
+        <h2>आपकी उम्र</h2>
+
+        <div class="age-grid">
+
+          <div class="age-box">
+            <span id="years">0</span>
+            <small>Years</small>
+            <strong>वर्ष</strong>
+          </div>
+
+          <div class="age-box">
+            <span id="months">0</span>
+            <small>Months</small>
+            <strong>महीने</strong>
+          </div>
+
+          <div class="age-box">
+            <span id="days">0</span>
+            <small>Days</small>
+            <strong>दिन</strong>
+          </div>
+
         </div>
 
-    </main>
-<script src="script.js"></script>
-</body>
 
+        <div class="details">
+
+          <div class="detail-item">
+            <span>📅 Next Birthday</span>
+            <strong id="nextBirthday">—</strong>
+          </div>
+
+          <div class="detail-item">
+            <span>⏳ Days Until Birthday</span>
+            <strong id="daysUntilBirthday">—</strong>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <footer class="footer">
+        <p>
+          Free Online Age Calculator
+        </p>
+
+        <p>
+          Accurate • Simple • Fast
+        </p>
+      </footer>
+
+    </section>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
 </html>
