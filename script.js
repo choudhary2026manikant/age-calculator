@@ -1,6 +1,9 @@
 const dateOfBirthInput =
   document.getElementById("dateOfBirth");
 
+const asOnDateInput =
+  document.getElementById("asOnDate");
+
 const calculateBtn =
   document.getElementById("calculateBtn");
 
@@ -11,6 +14,7 @@ const resetBtn =
 /*
   Age result elements
 */
+
 const yearsElement =
   document.getElementById("years");
 
@@ -22,8 +26,17 @@ const daysElement =
 
 
 /*
+  Calculation date
+*/
+
+const calculatedAsOnElement =
+  document.getElementById("calculatedAsOn");
+
+
+/*
   Birthday information
 */
+
 const nextBirthdayElement =
   document.getElementById("nextBirthday");
 
@@ -34,6 +47,7 @@ const daysUntilBirthdayElement =
 /*
   Error message
 */
+
 const errorMessage =
   document.getElementById("errorMessage");
 
@@ -41,6 +55,7 @@ const errorMessage =
 /*
   Life statistics elements
 */
+
 const totalDaysElement =
   document.getElementById("totalDays");
 
@@ -63,6 +78,7 @@ const totalSecondsElement =
 /*
   Get today's date without time.
 */
+
 function getToday() {
 
   const now = new Date();
@@ -76,8 +92,33 @@ function getToday() {
 
 
 /*
+  Format date as YYYY-MM-DD
+  for date input fields.
+*/
+
+function formatInputDate(date) {
+
+  const year =
+    date.getFullYear();
+
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+  const day =
+    String(
+      date.getDate()
+    ).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+
+/*
   Create a local date.
 */
+
 function createDate(
   year,
   month,
@@ -93,8 +134,31 @@ function createDate(
 
 
 /*
+  Convert date input value
+  into a local date.
+*/
+
+function parseInputDate(
+  value
+) {
+
+  const parts =
+    value
+      .split("-")
+      .map(Number);
+
+  return createDate(
+    parts[0],
+    parts[1] - 1,
+    parts[2]
+  );
+}
+
+
+/*
   Get number of days in a month.
 */
+
 function getDaysInMonth(
   year,
   month
@@ -111,54 +175,58 @@ function getDaysInMonth(
 /*
   Calculate exact age.
 */
+
 function calculateExactAge(
   birthDate,
-  today
+  targetDate
 ) {
 
   let years =
-    today.getFullYear() -
+    targetDate.getFullYear() -
     birthDate.getFullYear();
 
   let months =
-    today.getMonth() -
+    targetDate.getMonth() -
     birthDate.getMonth();
 
   let days =
-    today.getDate() -
+    targetDate.getDate() -
     birthDate.getDate();
 
 
   /*
     Borrow days from previous month.
   */
+
   if (days < 0) {
 
     months--;
 
     const previousMonth =
-      today.getMonth() - 1;
+      targetDate.getMonth() - 1;
 
     const previousMonthYear =
       previousMonth < 0
-        ? today.getFullYear() - 1
-        : today.getFullYear();
+        ? targetDate.getFullYear() - 1
+        : targetDate.getFullYear();
 
     const normalizedMonth =
       previousMonth < 0
         ? 11
         : previousMonth;
 
-    days += getDaysInMonth(
-      previousMonthYear,
-      normalizedMonth
-    );
+    days +=
+      getDaysInMonth(
+        previousMonthYear,
+        normalizedMonth
+      );
   }
 
 
   /*
     Borrow one year.
   */
+
   if (months < 0) {
 
     years--;
@@ -176,11 +244,13 @@ function calculateExactAge(
 
 
 /*
-  Calculate next birthday.
+  Calculate next birthday
+  relative to target date.
 */
+
 function getNextBirthday(
   birthDate,
-  today
+  targetDate
 ) {
 
   const birthMonth =
@@ -190,12 +260,13 @@ function getNextBirthday(
     birthDate.getDate();
 
   let birthdayYear =
-    today.getFullYear();
+    targetDate.getFullYear();
 
 
   /*
     Handle February 29 birthdays.
   */
+
   let birthdayDay =
     Math.min(
       birthDay,
@@ -218,7 +289,8 @@ function getNextBirthday(
     If birthday has passed,
     use next year.
   */
-  if (nextBirthday < today) {
+
+  if (nextBirthday < targetDate) {
 
     birthdayYear++;
 
@@ -248,6 +320,7 @@ function getNextBirthday(
   Calculate difference between
   two dates in complete days.
 */
+
 function getDaysBetween(
   date1,
   date2
@@ -266,7 +339,10 @@ function getDaysBetween(
 /*
   Format date for display.
 */
-function formatDate(date) {
+
+function formatDate(
+  date
+) {
 
   return date.toLocaleDateString(
     "en-IN",
@@ -282,7 +358,10 @@ function formatDate(date) {
 /*
   Format large numbers with commas.
 */
-function formatNumber(number) {
+
+function formatNumber(
+  number
+) {
 
   return new Intl.NumberFormat(
     "en-IN"
@@ -293,7 +372,10 @@ function formatNumber(number) {
 /*
   Show error message.
 */
-function showError(message) {
+
+function showError(
+  message
+) {
 
   errorMessage.textContent =
     message;
@@ -303,6 +385,7 @@ function showError(message) {
 /*
   Clear error message.
 */
+
 function clearError() {
 
   errorMessage.textContent =
@@ -313,9 +396,10 @@ function clearError() {
 /*
   Calculate Life Statistics.
 */
+
 function calculateLifeStatistics(
   birthDate,
-  today
+  targetDate
 ) {
 
   const millisecondsPerDay =
@@ -325,8 +409,9 @@ function calculateLifeStatistics(
   /*
     Total number of days lived.
   */
+
   const totalMilliseconds =
-    today - birthDate;
+    targetDate - birthDate;
 
   const totalDays =
     Math.floor(
@@ -338,6 +423,7 @@ function calculateLifeStatistics(
   /*
     Total weeks.
   */
+
   const totalWeeks =
     Math.floor(
       totalDays / 7
@@ -345,15 +431,13 @@ function calculateLifeStatistics(
 
 
   /*
-    Approximate total months.
-    
-    We use the exact age calculation
-    plus the remaining partial month.
+    Total months.
   */
+
   const age =
     calculateExactAge(
       birthDate,
-      today
+      targetDate
     );
 
   const totalMonths =
@@ -364,6 +448,7 @@ function calculateLifeStatistics(
   /*
     Total hours.
   */
+
   const totalHours =
     totalDays * 24;
 
@@ -371,6 +456,7 @@ function calculateLifeStatistics(
   /*
     Total minutes.
   */
+
   const totalMinutes =
     totalHours * 60;
 
@@ -378,6 +464,7 @@ function calculateLifeStatistics(
   /*
     Total seconds.
   */
+
   const totalSeconds =
     totalMinutes * 60;
 
@@ -396,6 +483,7 @@ function calculateLifeStatistics(
 /*
   Display Life Statistics.
 */
+
 function displayLifeStatistics(
   statistics
 ) {
@@ -433,16 +521,35 @@ function displayLifeStatistics(
 
 
 /*
+  Set today's date as default
+  Age as on Date.
+*/
+
+function setDefaultAsOnDate() {
+
+  const today =
+    getToday();
+
+  asOnDateInput.value =
+    formatInputDate(
+      today
+    );
+}
+
+
+/*
   Main age calculation.
 */
+
 function calculateAge() {
 
   clearError();
 
 
   /*
-    Check date selection.
+    Check date of birth.
   */
+
   if (!dateOfBirthInput.value) {
 
     showError(
@@ -454,34 +561,42 @@ function calculateAge() {
 
 
   /*
-    Convert YYYY-MM-DD
-    into a local date.
+    Check Age as on Date.
   */
-  const parts =
-    dateOfBirthInput.value
-      .split("-")
-      .map(Number);
 
+  if (!asOnDateInput.value) {
 
-  const birthDate =
-    createDate(
-      parts[0],
-      parts[1] - 1,
-      parts[2]
+    showError(
+      "कृपया Age as on Date चुनें।"
     );
 
-
-  const today =
-    getToday();
+    return;
+  }
 
 
   /*
-    Prevent future dates.
+    Convert dates.
   */
-  if (birthDate > today) {
+
+  const birthDate =
+    parseInputDate(
+      dateOfBirthInput.value
+    );
+
+  const targetDate =
+    parseInputDate(
+      asOnDateInput.value
+    );
+
+
+  /*
+    Prevent invalid date range.
+  */
+
+  if (birthDate > targetDate) {
 
     showError(
-      "जन्म तारीख भविष्य की नहीं हो सकती।"
+      "Age as on Date, जन्म तारीख के बाद या उसी दिन की होनी चाहिए।"
     );
 
     return;
@@ -491,10 +606,11 @@ function calculateAge() {
   /*
     Calculate exact age.
   */
+
   const age =
     calculateExactAge(
       birthDate,
-      today
+      targetDate
     );
 
 
@@ -509,12 +625,23 @@ function calculateAge() {
 
 
   /*
+    Display calculation date.
+  */
+
+  calculatedAsOnElement.textContent =
+    formatDate(
+      targetDate
+    );
+
+
+  /*
     Calculate next birthday.
   */
+
   const nextBirthday =
     getNextBirthday(
       birthDate,
-      today
+      targetDate
     );
 
 
@@ -527,9 +654,10 @@ function calculateAge() {
   /*
     Calculate days until birthday.
   */
+
   const daysRemaining =
     getDaysBetween(
-      today,
+      targetDate,
       nextBirthday
     );
 
@@ -549,16 +677,18 @@ function calculateAge() {
   /*
     Calculate Life Statistics.
   */
+
   const statistics =
     calculateLifeStatistics(
       birthDate,
-      today
+      targetDate
     );
 
 
   /*
     Display Life Statistics.
   */
+
   displayLifeStatistics(
     statistics
   );
@@ -568,18 +698,29 @@ function calculateAge() {
 /*
   Reset complete calculator.
 */
+
 function resetCalculator() {
 
   /*
-    Clear date.
+    Clear date of birth.
   */
+
   dateOfBirthInput.value =
     "";
 
 
   /*
+    Reset Age as on Date
+    to today.
+  */
+
+  setDefaultAsOnDate();
+
+
+  /*
     Reset age.
   */
+
   yearsElement.textContent =
     "0";
 
@@ -591,8 +732,17 @@ function resetCalculator() {
 
 
   /*
+    Reset calculation date.
+  */
+
+  calculatedAsOnElement.textContent =
+    "—";
+
+
+  /*
     Reset birthday information.
   */
+
   nextBirthdayElement.textContent =
     "—";
 
@@ -603,6 +753,7 @@ function resetCalculator() {
   /*
     Reset Life Statistics.
   */
+
   totalDaysElement.textContent =
     "0";
 
@@ -625,12 +776,14 @@ function resetCalculator() {
   /*
     Remove error.
   */
+
   clearError();
 
 
   /*
     Focus date field.
   */
+
   dateOfBirthInput.focus();
 }
 
@@ -638,6 +791,7 @@ function resetCalculator() {
 /*
   Calculate button.
 */
+
 calculateBtn.addEventListener(
   "click",
   calculateAge
@@ -647,7 +801,15 @@ calculateBtn.addEventListener(
 /*
   Reset button.
 */
+
 resetBtn.addEventListener(
   "click",
   resetCalculator
 );
+
+
+/*
+  Set default date on page load.
+*/
+
+setDefaultAsOnDate();

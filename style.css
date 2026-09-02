@@ -60,60 +60,50 @@ body {
 }
 
 
-/* ================================
-   HEADER
-================================ */
+/* HEADER */
 
 .header {
   text-align: center;
-
   margin-bottom: 32px;
 }
 
 .icon {
   font-size: 48px;
-
   margin-bottom: 12px;
 }
 
 .header h1 {
   font-size: 36px;
-
   line-height: 1.2;
-
   margin-bottom: 12px;
 }
 
 .header p {
   color: var(--muted);
-
   font-size: 18px;
-
   line-height: 1.6;
 }
 
 .header .subtitle {
   font-size: 14px;
-
   margin-top: 4px;
 }
 
 
-/* ================================
-   INPUT
-================================ */
+/* INPUT */
 
 .input-section {
   margin-top: 10px;
 }
 
+.date-field {
+  margin-bottom: 18px;
+}
+
 .input-section label {
   display: block;
-
   font-size: 16px;
-
   font-weight: 700;
-
   margin-bottom: 9px;
 }
 
@@ -146,19 +136,28 @@ input[type="date"]:focus {
     0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
+.field-help {
+  margin-top: 7px;
 
-/* ================================
-   BUTTONS
-================================ */
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* BUTTONS */
 
 .button-group {
   display: grid;
 
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns:
+    1fr 1fr;
 
   gap: 12px;
 
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 button {
@@ -183,7 +182,6 @@ button {
 
 #calculateBtn {
   background: var(--primary);
-
   color: white;
 }
 
@@ -193,7 +191,6 @@ button {
 
 .reset-button {
   background: #e2e8f0;
-
   color: #334155;
 }
 
@@ -206,9 +203,7 @@ button:active {
 }
 
 
-/* ================================
-   ERROR
-================================ */
+/* ERROR */
 
 .error-message {
   min-height: 24px;
@@ -225,9 +220,7 @@ button:active {
 }
 
 
-/* ================================
-   AGE RESULT
-================================ */
+/* AGE RESULT */
 
 .result-section {
   margin-top: 10px;
@@ -244,7 +237,19 @@ button:active {
 .result-section h2 {
   font-size: 24px;
 
+  margin-bottom: 8px;
+}
+
+.result-date {
+  color: var(--muted);
+
+  font-size: 14px;
+
   margin-bottom: 22px;
+}
+
+.result-date strong {
+  color: var(--text);
 }
 
 .age-grid {
@@ -296,9 +301,7 @@ button:active {
 }
 
 
-/* ================================
-   BIRTHDAY DETAILS
-================================ */
+/* BIRTHDAY DETAILS */
 
 .details {
   margin-top: 18px;
@@ -339,9 +342,7 @@ button:active {
 }
 
 
-/* ================================
-   LIFE STATISTICS
-================================ */
+/* LIFE STATISTICS */
 
 .statistics-section {
   margin-top: 22px;
@@ -439,9 +440,7 @@ button:active {
 }
 
 
-/* ================================
-   SEO CONTENT
-================================ */
+/* SEO CONTENT */
 
 .content-section {
   margin-top: 28px;
@@ -507,9 +506,7 @@ button:active {
 }
 
 
-/* ================================
-   FAQ
-================================ */
+/* FAQ */
 
 .faq-section {
   margin-top: 28px;
@@ -608,9 +605,7 @@ button:active {
 }
 
 
-/* ================================
-   FOOTER
-================================ */
+/* FOOTER */
 
 .footer {
   margin-top: 28px;
@@ -629,9 +624,7 @@ button:active {
 }
 
 
-/* ================================
-   MOBILE
-================================ */
+/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -732,4 +725,5 @@ button:active {
 
     font-size: 13px;
   }
+
 }

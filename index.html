@@ -5,22 +5,39 @@
 
   <meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <title>Age Calculator - Calculate Exact Age Online</title>
+  <title>
+    Age Calculator - Calculate Exact Age Online
+  </title>
 
   <meta
     name="description"
-    content="Calculate your exact age in years, months and days. Find your next birthday and explore your life statistics with our free online age calculator."
+    content="Calculate your exact age in years, months and days. Calculate age as on any date, find your next birthday and explore life statistics."
   >
 
-  <meta name="robots" content="index, follow">
+  <meta
+    name="robots"
+    content="index, follow"
+  >
 
-  <meta name="author" content="Age Calculator">
+  <meta
+    name="author"
+    content="Age Calculator"
+  >
 
-  <meta name="theme-color" content="#2563eb">
+  <meta
+    name="theme-color"
+    content="#2563eb"
+  >
 
-  <meta name="color-scheme" content="light">
+  <meta
+    name="color-scheme"
+    content="light"
+  >
 
 
   <!-- Google Search Console Verification -->
@@ -40,7 +57,7 @@
 
   <meta
     property="og:description"
-    content="Calculate your exact age, next birthday and life statistics online for free."
+    content="Calculate exact age and age as on any date. Find your next birthday and life statistics."
   >
 
   <meta
@@ -68,7 +85,7 @@
 
   <meta
     name="twitter:description"
-    content="Calculate your exact age in years, months and days and find your next birthday."
+    content="Calculate exact age, age as on any date, next birthday and life statistics."
   >
 
 
@@ -95,7 +112,7 @@
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Age Calculator",
-    "description": "Free online age calculator for calculating exact age, next birthday and life statistics.",
+    "description": "Free online age calculator for calculating exact age and age as on any date.",
     "url": "https://choudhary2026manikant.github.io/age-calculator/"
   }
   </script>
@@ -114,7 +131,10 @@
   </script>
 
 
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
 
 </head>
 
@@ -144,7 +164,8 @@
         </p>
 
         <p class="subtitle">
-          Find your next birthday and explore
+          Calculate your age as on any date,
+          find your next birthday and explore
           your life statistics.
         </p>
 
@@ -155,15 +176,39 @@
 
       <section class="input-section">
 
-        <label for="dateOfBirth">
-          Enter your date of birth
-        </label>
+        <div class="date-field">
 
-        <input
-          type="date"
-          id="dateOfBirth"
-          name="dateOfBirth"
-        >
+          <label for="dateOfBirth">
+            Date of Birth
+          </label>
+
+          <input
+            type="date"
+            id="dateOfBirth"
+            name="dateOfBirth"
+          >
+
+        </div>
+
+
+        <div class="date-field">
+
+          <label for="asOnDate">
+            Age as on Date
+          </label>
+
+          <input
+            type="date"
+            id="asOnDate"
+            name="asOnDate"
+          >
+
+          <p class="field-help">
+            Leave this as today to calculate your current age.
+          </p>
+
+        </div>
+
 
         <div class="button-group">
 
@@ -184,6 +229,7 @@
 
         </div>
 
+
         <p
           id="errorMessage"
           class="error-message"
@@ -200,6 +246,14 @@
         <h2>
           Your Exact Age
         </h2>
+
+        <p class="result-date">
+          Age calculated as on
+          <strong id="calculatedAsOn">
+            —
+          </strong>
+        </p>
+
 
         <div class="age-grid">
 
@@ -298,12 +352,11 @@
 
         <p class="statistics-subtitle">
           Approximate time lived based on your
-          date of birth.
+          selected calculation date.
         </p>
 
 
         <div class="statistics-grid">
-
 
           <div class="stat-card">
 
@@ -440,13 +493,42 @@
         <p>
           An age calculator is an online tool that
           calculates a person's age from their date
-          of birth to the current date.
+          of birth to a selected date.
         </p>
 
         <p>
-          Instead of manually counting years, months
-          and days, an age calculator provides the
-          result quickly and accurately.
+          This calculator can show your exact age
+          in complete years, months and days.
+          You can also calculate your age as on
+          a specific date.
+        </p>
+
+      </section>
+
+
+      <section class="content-section">
+
+        <h2>
+          What Does "Age as on Date" Mean?
+        </h2>
+
+        <p>
+          Age as on date means calculating how old
+          you were on a particular date instead of
+          calculating only your current age.
+        </p>
+
+        <p>
+          For example, you can enter your date of
+          birth and choose a specific date to find
+          your exact age on that date.
+        </p>
+
+        <p>
+          This can be useful when checking age for
+          forms, applications, eligibility dates,
+          records and other situations where an age
+          needs to be calculated on a particular date.
         </p>
 
       </section>
@@ -459,15 +541,19 @@
         </h2>
 
         <p>
-          To calculate your exact age, simply enter
-          your date of birth in the date field above
-          and click the Calculate Age button.
+          To calculate your exact age, enter your
+          date of birth and choose the date on which
+          you want to calculate your age.
         </p>
 
         <ol>
 
           <li>
             Select your date of birth.
+          </li>
+
+          <li>
+            Select the Age as on Date.
           </li>
 
           <li>
@@ -496,16 +582,18 @@
         </h2>
 
         <p>
-          This calculator compares your date of
-          birth with today's date and calculates
-          the difference between them.
+          The calculator compares your date of
+          birth with the selected calculation date.
         </p>
 
         <p>
-          The result is divided into complete years,
-          months and remaining days. The calculator
-          also determines the date of your next
-          birthday.
+          The difference is divided into complete
+          years, months and remaining days.
+        </p>
+
+        <p>
+          The calculator also determines your next
+          birthday relative to the selected date.
         </p>
 
         <p>
@@ -535,8 +623,22 @@
 
           <p>
             The calculator uses your date of birth
-            and the current date to calculate your
-            age in complete years, months and days.
+            and selected calculation date to calculate
+            your age in complete years, months and days.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Can I calculate my age as on a specific date?
+          </summary>
+
+          <p>
+            Yes. Enter your date of birth and select
+            the date on which you want to know your age.
           </p>
 
         </details>
@@ -550,8 +652,8 @@
 
           <p>
             Yes. The Life Statistics section shows
-            the approximate total number of days you
-            have lived.
+            the approximate total number of days
+            between your birth date and calculation date.
           </p>
 
         </details>
@@ -566,7 +668,7 @@
           <p>
             Yes. The calculator automatically shows
             your next birthday and the number of days
-            remaining until it.
+            remaining from the selected calculation date.
           </p>
 
         </details>
@@ -615,7 +717,15 @@
             "name": "How accurate is this age calculator?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The calculator uses your date of birth and the current date to calculate your age in complete years, months and days."
+              "text": "The calculator uses your date of birth and selected calculation date to calculate your age in complete years, months and days."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I calculate my age as on a specific date?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Enter your date of birth and select the date on which you want to know your age."
             }
           },
           {
@@ -623,7 +733,7 @@
             "name": "Can I calculate my age in days?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. The Life Statistics section shows the approximate total number of days lived."
+              "text": "Yes. The Life Statistics section shows the approximate total number of days between your birth date and calculation date."
             }
           },
           {
@@ -631,7 +741,7 @@
             "name": "Can I find my next birthday?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. The calculator automatically shows your next birthday and the number of days remaining."
+              "text": "Yes. The calculator automatically shows your next birthday and the number of days remaining from the selected calculation date."
             }
           },
           {
@@ -666,7 +776,7 @@
 
         <p>
           Free online age calculator for
-          calculating exact age and next birthday.
+          calculating exact age and age as on any date.
         </p>
 
       </footer>
