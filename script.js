@@ -8,655 +8,690 @@ const yearsElement = document.getElementById("years");
 const monthsElement = document.getElementById("months");
 const daysElement = document.getElementById("days");
 
-const calculatedAsOnElement = document.getElementById("calculatedAsOn");
-const nextBirthdayElement = document.getElementById("nextBirthday");
-const daysUntilBirthdayElement = document.getElementById("daysUntilBirthday");
+const calculatedAsOnElement =
+  document.getElementById("calculatedAsOn");
 
-const birthdayHighlight = document.getElementById("birthdayHighlight");
-const heroAgePreview = document.getElementById("heroAgePreview");
-const heroBirthdayPreview = document.getElementById("heroBirthdayPreview");
+const nextBirthdayElement =
+  document.getElementById("nextBirthday");
 
-const errorMessage = document.getElementById("errorMessage");
+const daysUntilBirthdayElement =
+  document.getElementById("daysUntilBirthday");
 
-const totalDaysElement = document.getElementById("totalDays");
-const totalWeeksElement = document.getElementById("totalWeeks");
-const totalMonthsElement = document.getElementById("totalMonths");
-const totalHoursElement = document.getElementById("totalHours");
-const totalMinutesElement = document.getElementById("totalMinutes");
-const totalSecondsElement = document.getElementById("totalSeconds");
+const errorMessage =
+  document.getElementById("errorMessage");
 
+const totalDaysElement =
+  document.getElementById("totalDays");
 
-/* =========================
-   DATE HELPERS
-========================= */
+const totalWeeksElement =
+  document.getElementById("totalWeeks");
+
+const totalMonthsElement =
+  document.getElementById("totalMonths");
+
+const totalHoursElement =
+  document.getElementById("totalHours");
+
+const totalMinutesElement =
+  document.getElementById("totalMinutes");
+
+const totalSecondsElement =
+  document.getElementById("totalSeconds");
+
 
 function getToday() {
-    const now = new Date();
 
-    return new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate()
-    );
+  const now = new Date();
+
+  return new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
 }
 
 
 function formatDisplayDate(date) {
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
 
-    return `${day}/${month}/${year}`;
+  return `${String(date.getDate()).padStart(2, "0")}/${String(
+    date.getMonth() + 1
+  ).padStart(2, "0")}/${date.getFullYear()}`;
+
 }
 
 
 function formatDateInputValue(value) {
-    let digits = value.replace(/\D/g, "");
 
-    digits = digits.slice(0, 8);
+  let digits = value
+    .replace(/\D/g, "")
+    .slice(0, 8);
 
-    if (digits.length > 4) {
-        return (
-            digits.slice(0, 2) +
-            "/" +
-            digits.slice(2, 4) +
-            "/" +
-            digits.slice(4)
-        );
-    }
+  if (digits.length > 4) {
 
-    if (digits.length > 2) {
-        return (
-            digits.slice(0, 2) +
-            "/" +
-            digits.slice(2)
-        );
-    }
+    return (
+      digits.slice(0, 2) +
+      "/" +
+      digits.slice(2, 4) +
+      "/" +
+      digits.slice(4)
+    );
 
-    return digits;
+  }
+
+  if (digits.length > 2) {
+
+    return (
+      digits.slice(0, 2) +
+      "/" +
+      digits.slice(2)
+    );
+
+  }
+
+  return digits;
+
 }
 
 
 function handleDateInput(event) {
-    const input = event.target;
 
-    input.value = formatDateInputValue(input.value);
+  event.target.value =
+    formatDateInputValue(event.target.value);
+
 }
 
 
-dateOfBirthInput.addEventListener("input", handleDateInput);
-asOnDateInput.addEventListener("input", handleDateInput);
+dateOfBirthInput?.addEventListener(
+  "input",
+  handleDateInput
+);
+
+asOnDateInput?.addEventListener(
+  "input",
+  handleDateInput
+);
 
 
 function parseIndianDate(value) {
-    const pattern = /^(\d{2})\/(\d{2})\/(\d{4})$/;
 
-    const match = value.match(pattern);
+  const match =
+    value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
 
-    if (!match) {
-        return null;
-    }
+  if (!match) {
+    return null;
+  }
 
-    const day = Number(match[1]);
-    const month = Number(match[2]);
-    const year = Number(match[3]);
+  const day = Number(match[1]);
+  const month = Number(match[2]);
+  const year = Number(match[3]);
 
-    if (
-        day < 1 ||
-        day > 31 ||
-        month < 1 ||
-        month > 12
-    ) {
-        return null;
-    }
+  if (
+    day < 1 ||
+    day > 31 ||
+    month < 1 ||
+    month > 12
+  ) {
+    return null;
+  }
 
-    const date = new Date(
-        year,
-        month - 1,
-        day
-    );
+  const date = new Date(
+    year,
+    month - 1,
+    day
+  );
 
-    if (
-        date.getFullYear() !== year ||
-        date.getMonth() !== month - 1 ||
-        date.getDate() !== day
-    ) {
-        return null;
-    }
+  if (
+    date.getFullYear() !== year ||
+    date.getMonth() !== month - 1 ||
+    date.getDate() !== day
+  ) {
+    return null;
+  }
 
-    return date;
+  return date;
+
 }
 
 
 function getDaysInMonth(year, month) {
-    return new Date(
-        year,
-        month + 1,
-        0
-    ).getDate();
+
+  return new Date(
+    year,
+    month + 1,
+    0
+  ).getDate();
+
 }
 
 
-/* =========================
-   AGE CALCULATION
-========================= */
+function calculateExactAge(
+  birthDate,
+  targetDate
+) {
 
-function calculateExactAge(birthDate, targetDate) {
-    let years =
-        targetDate.getFullYear() -
-        birthDate.getFullYear();
+  let years =
+    targetDate.getFullYear() -
+    birthDate.getFullYear();
 
-    let months =
-        targetDate.getMonth() -
-        birthDate.getMonth();
+  let months =
+    targetDate.getMonth() -
+    birthDate.getMonth();
 
-    let days =
-        targetDate.getDate() -
-        birthDate.getDate();
-
-
-    if (days < 0) {
-        months--;
-
-        const previousMonth =
-            targetDate.getMonth() - 1;
-
-        const previousMonthYear =
-            previousMonth < 0
-                ? targetDate.getFullYear() - 1
-                : targetDate.getFullYear();
-
-        const normalizedMonth =
-            previousMonth < 0
-                ? 11
-                : previousMonth;
-
-        days += getDaysInMonth(
-            previousMonthYear,
-            normalizedMonth
-        );
-    }
+  let days =
+    targetDate.getDate() -
+    birthDate.getDate();
 
 
-    if (months < 0) {
-        years--;
-        months += 12;
-    }
+  if (days < 0) {
+
+    months--;
+
+    const previousMonth =
+      targetDate.getMonth() - 1;
+
+    const previousMonthYear =
+      previousMonth < 0
+        ? targetDate.getFullYear() - 1
+        : targetDate.getFullYear();
+
+    const normalizedMonth =
+      previousMonth < 0
+        ? 11
+        : previousMonth;
+
+    days += getDaysInMonth(
+      previousMonthYear,
+      normalizedMonth
+    );
+
+  }
 
 
-    return {
-        years,
-        months,
-        days
-    };
+  if (months < 0) {
+
+    years--;
+
+    months += 12;
+
+  }
+
+
+  return {
+    years,
+    months,
+    days
+  };
+
 }
 
 
-/* =========================
-   NEXT BIRTHDAY
-========================= */
+function getNextBirthday(
+  birthDate,
+  targetDate
+) {
 
-function getNextBirthday(birthDate, targetDate) {
-    const birthMonth = birthDate.getMonth();
-    const birthDay = birthDate.getDate();
+  const birthMonth =
+    birthDate.getMonth();
 
-    let birthdayYear = targetDate.getFullYear();
+  const birthDay =
+    birthDate.getDate();
 
-    let birthdayDay = Math.min(
-        birthDay,
-        getDaysInMonth(
-            birthdayYear,
-            birthMonth
-        )
+  let birthdayYear =
+    targetDate.getFullYear();
+
+  let birthdayDay =
+    Math.min(
+      birthDay,
+      getDaysInMonth(
+        birthdayYear,
+        birthMonth
+      )
+    );
+
+  let nextBirthday =
+    new Date(
+      birthdayYear,
+      birthMonth,
+      birthdayDay
     );
 
 
-    let nextBirthday = new Date(
+  if (nextBirthday < targetDate) {
+
+    birthdayYear++;
+
+    birthdayDay =
+      Math.min(
+        birthDay,
+        getDaysInMonth(
+          birthdayYear,
+          birthMonth
+        )
+      );
+
+    nextBirthday =
+      new Date(
         birthdayYear,
         birthMonth,
         birthdayDay
-    );
+      );
+
+  }
 
 
-    if (nextBirthday < targetDate) {
-        birthdayYear++;
+  return nextBirthday;
 
-        birthdayDay = Math.min(
-            birthDay,
-            getDaysInMonth(
-                birthdayYear,
-                birthMonth
-            )
-        );
-
-        nextBirthday = new Date(
-            birthdayYear,
-            birthMonth,
-            birthdayDay
-        );
-    }
-
-
-    return nextBirthday;
 }
 
 
-/* =========================
-   DATE DIFFERENCE
-========================= */
+function getDaysBetween(
+  date1,
+  date2
+) {
 
-function getDaysBetween(date1, date2) {
-    const millisecondsPerDay =
-        1000 * 60 * 60 * 24;
+  return Math.round(
+    (date2 - date1) /
+    (1000 * 60 * 60 * 24)
+  );
 
-    return Math.round(
-        (date2 - date1) /
-        millisecondsPerDay
-    );
 }
 
-
-/* =========================
-   NUMBER FORMAT
-========================= */
 
 function formatNumber(number) {
-    return new Intl.NumberFormat(
-        "en-IN"
-    ).format(number);
+
+  return new Intl.NumberFormat(
+    "en-IN"
+  ).format(number);
+
 }
 
 
-/* =========================
-   ERROR HANDLING
-========================= */
-
 function showError(message) {
-    errorMessage.textContent = message;
+
+  errorMessage.textContent =
+    message;
+
 }
 
 
 function clearError() {
-    errorMessage.textContent = "";
+
+  errorMessage.textContent = "";
+
 }
 
 
-/* =========================
-   LIFE STATISTICS
-========================= */
-
 function calculateLifeStatistics(
-    birthDate,
-    targetDate
+  birthDate,
+  targetDate
 ) {
-    const millisecondsPerDay =
-        1000 * 60 * 60 * 24;
 
-    const totalMilliseconds =
-        targetDate - birthDate;
-
-    const totalDays = Math.floor(
-        totalMilliseconds /
-        millisecondsPerDay
+  const totalDays =
+    Math.floor(
+      (targetDate - birthDate) /
+      (1000 * 60 * 60 * 24)
     );
 
-    const totalWeeks = Math.floor(
-        totalDays / 7
+  const age =
+    calculateExactAge(
+      birthDate,
+      targetDate
     );
 
-    const age = calculateExactAge(
-        birthDate,
-        targetDate
-    );
 
-    const totalMonths =
-        age.years * 12 +
-        age.months;
+  return {
 
-    const totalHours =
-        totalDays * 24;
+    totalDays,
 
-    const totalMinutes =
-        totalHours * 60;
+    totalWeeks:
+      Math.floor(totalDays / 7),
 
-    const totalSeconds =
-        totalMinutes * 60;
+    totalMonths:
+      age.years * 12 +
+      age.months,
 
+    totalHours:
+      totalDays * 24,
 
-    return {
-        totalDays,
-        totalWeeks,
-        totalMonths,
-        totalHours,
-        totalMinutes,
-        totalSeconds
-    };
+    totalMinutes:
+      totalDays * 24 * 60,
+
+    totalSeconds:
+      totalDays * 24 * 60 * 60
+
+  };
+
 }
 
 
 function displayLifeStatistics(
-    statistics
+  statistics
 ) {
-    totalDaysElement.textContent =
-        formatNumber(statistics.totalDays);
 
-    totalWeeksElement.textContent =
-        formatNumber(statistics.totalWeeks);
-
-    totalMonthsElement.textContent =
-        formatNumber(statistics.totalMonths);
-
-    totalHoursElement.textContent =
-        formatNumber(statistics.totalHours);
-
-    totalMinutesElement.textContent =
-        formatNumber(statistics.totalMinutes);
-
-    totalSecondsElement.textContent =
-        formatNumber(statistics.totalSeconds);
-}
-
-
-/* =========================
-   BIRTHDAY COUNTDOWN TEXT
-========================= */
-
-function getBirthdayCountdownText(
-    targetDate,
-    nextBirthday
-) {
-    const daysRemaining = getDaysBetween(
-        targetDate,
-        nextBirthday
+  totalDaysElement.textContent =
+    formatNumber(
+      statistics.totalDays
     );
 
-
-    if (daysRemaining === 0) {
-        return "🎉 आज आपका जन्मदिन है!";
-    }
-
-
-    if (daysRemaining === 1) {
-        return "🎂 सिर्फ 1 दिन बाकी";
-    }
-
-
-    if (daysRemaining < 30) {
-        return `🎂 ${formatNumber(daysRemaining)} दिन बाकी`;
-    }
-
-
-    const months = Math.floor(
-        daysRemaining / 30
+  totalWeeksElement.textContent =
+    formatNumber(
+      statistics.totalWeeks
     );
 
-    const days = daysRemaining % 30;
+  totalMonthsElement.textContent =
+    formatNumber(
+      statistics.totalMonths
+    );
 
+  totalHoursElement.textContent =
+    formatNumber(
+      statistics.totalHours
+    );
 
-    if (months > 0 && days > 0) {
-        return `🎂 ${months} महीने ${days} दिन बाकी`;
-    }
+  totalMinutesElement.textContent =
+    formatNumber(
+      statistics.totalMinutes
+    );
 
+  totalSecondsElement.textContent =
+    formatNumber(
+      statistics.totalSeconds
+    );
 
-    if (months > 0) {
-        return `🎂 ${months} महीने बाकी`;
-    }
-
-
-    return `🎂 ${formatNumber(daysRemaining)} दिन बाकी`;
 }
 
-
-/* =========================
-   DEFAULT DATE
-========================= */
 
 function setDefaultAsOnDate() {
-    const today = getToday();
+
+  if (asOnDateInput) {
 
     asOnDateInput.value =
-        formatDisplayDate(today);
+      formatDisplayDate(
+        getToday()
+      );
+
+  }
+
 }
 
-
-/* =========================
-   MAIN CALCULATOR
-========================= */
 
 function calculateAge() {
-    clearError();
+
+  clearError();
 
 
-    if (!dateOfBirthInput.value) {
-        showError(
-            "कृपया अपनी जन्म तारीख DD/MM/YYYY में दर्ज करें।"
-        );
+  if (!dateOfBirthInput.value) {
 
-        return;
-    }
+    return showError(
+      "कृपया अपनी जन्म तारीख DD/MM/YYYY में दर्ज करें।"
+    );
 
-
-    if (!asOnDateInput.value) {
-        showError(
-            "कृपया Age as on Date DD/MM/YYYY में दर्ज करें।"
-        );
-
-        return;
-    }
+  }
 
 
-    const birthDate =
-        parseIndianDate(
-            dateOfBirthInput.value
-        );
+  if (!asOnDateInput.value) {
 
-    const targetDate =
-        parseIndianDate(
-            asOnDateInput.value
-        );
+    return showError(
+      "कृपया Age as on Date DD/MM/YYYY में दर्ज करें।"
+    );
+
+  }
 
 
-    if (!birthDate) {
-        showError(
-            "कृपया सही Date of Birth DD/MM/YYYY में दर्ज करें।"
-        );
+  const birthDate =
+    parseIndianDate(
+      dateOfBirthInput.value
+    );
 
-        return;
-    }
-
-
-    if (!targetDate) {
-        showError(
-            "कृपया सही Age as on Date DD/MM/YYYY में दर्ज करें।"
-        );
-
-        return;
-    }
-
-
-    const today = getToday();
-
-
-    if (birthDate > today) {
-        showError(
-            "जन्म तारीख भविष्य की नहीं हो सकती।"
-        );
-
-        return;
-    }
-
-
-    if (birthDate > targetDate) {
-        showError(
-            "Age as on Date, जन्म तारीख के बाद या उसी दिन की होनी चाहिए।"
-        );
-
-        return;
-    }
-
-
-    /* AGE */
-
-    const age = calculateExactAge(
-        birthDate,
-        targetDate
+  const targetDate =
+    parseIndianDate(
+      asOnDateInput.value
     );
 
 
-    yearsElement.textContent =
-        age.years;
+  if (!birthDate) {
 
-    monthsElement.textContent =
-        age.months;
-
-    daysElement.textContent =
-        age.days;
-
-
-    calculatedAsOnElement.textContent =
-        formatDisplayDate(targetDate);
-
-
-    /* HERO PREVIEW */
-
-    heroAgePreview.textContent =
-        `${age.years}y ${age.months}m ${age.days}d`;
-
-
-    /* NEXT BIRTHDAY */
-
-    const nextBirthday =
-        getNextBirthday(
-            birthDate,
-            targetDate
-        );
-
-
-    nextBirthdayElement.textContent =
-        formatDisplayDate(nextBirthday);
-
-
-    heroBirthdayPreview.textContent =
-        formatDisplayDate(nextBirthday);
-
-
-    /* BIRTHDAY COUNTDOWN */
-
-    const daysRemaining =
-        getDaysBetween(
-            targetDate,
-            nextBirthday
-        );
-
-
-    const birthdayText =
-        getBirthdayCountdownText(
-            targetDate,
-            nextBirthday
-        );
-
-
-    daysUntilBirthdayElement.textContent =
-        birthdayText;
-
-
-    birthdayHighlight.textContent =
-        birthdayText;
-
-
-    /* LIFE STATISTICS */
-
-    const statistics =
-        calculateLifeStatistics(
-            birthDate,
-            targetDate
-        );
-
-
-    displayLifeStatistics(
-        statistics
+    return showError(
+      "कृपया सही Date of Birth DD/MM/YYYY में दर्ज करें।"
     );
+
+  }
+
+
+  if (!targetDate) {
+
+    return showError(
+      "कृपया सही Age as on Date DD/MM/YYYY में दर्ज करें।"
+    );
+
+  }
+
+
+  if (birthDate > getToday()) {
+
+    return showError(
+      "जन्म तारीख भविष्य की नहीं हो सकती।"
+    );
+
+  }
+
+
+  if (birthDate > targetDate) {
+
+    return showError(
+      "Age as on Date, जन्म तारीख के बाद या उसी दिन की होनी चाहिए।"
+    );
+
+  }
+
+
+  const age =
+    calculateExactAge(
+      birthDate,
+      targetDate
+    );
+
+
+  yearsElement.textContent =
+    age.years;
+
+  monthsElement.textContent =
+    age.months;
+
+  daysElement.textContent =
+    age.days;
+
+
+  calculatedAsOnElement.textContent =
+    formatDisplayDate(
+      targetDate
+    );
+
+
+  const next =
+    getNextBirthday(
+      birthDate,
+      targetDate
+    );
+
+
+  nextBirthdayElement.textContent =
+    formatDisplayDate(
+      next
+    );
+
+
+  const daysLeft =
+    getDaysBetween(
+      targetDate,
+      next
+    );
+
+
+  daysUntilBirthdayElement.textContent =
+    daysLeft === 0
+      ? "🎉 आज आपका जन्मदिन है!"
+      : `${formatNumber(daysLeft)} दिन`;
+
+
+  const highlight =
+    document.getElementById(
+      "birthdayHighlight"
+    );
+
+  const birthdayDate =
+    document.getElementById(
+      "birthdayDate"
+    );
+
+
+  if (highlight) {
+
+    highlight.textContent =
+      daysLeft === 0
+        ? "आज आपका जन्मदिन है!"
+        : ageToBirthdayText(
+            targetDate,
+            next
+          );
+
+  }
+
+
+  if (birthdayDate) {
+
+    birthdayDate.textContent =
+      formatDisplayDate(next);
+
+  }
+
+
+  displayLifeStatistics(
+    calculateLifeStatistics(
+      birthDate,
+      targetDate
+    )
+  );
+
 }
 
 
-/* =========================
-   RESET
-========================= */
+function ageToBirthdayText(
+  from,
+  to
+) {
+
+  const total =
+    getDaysBetween(
+      from,
+      to
+    );
+
+
+  if (total <= 0) {
+
+    return "Today";
+
+  }
+
+
+  const months =
+    Math.floor(total / 30);
+
+  const days =
+    total % 30;
+
+
+  if (
+    months > 0 &&
+    days > 0
+  ) {
+
+    return `${months} Months ${days} Days`;
+
+  }
+
+
+  if (months > 0) {
+
+    return `${months} Months`;
+
+  }
+
+
+  return `${days} Days`;
+
+}
+
 
 function resetCalculator() {
-    dateOfBirthInput.value = "";
 
-    setDefaultAsOnDate();
+  dateOfBirthInput.value = "";
 
-
-    yearsElement.textContent = "0";
-    monthsElement.textContent = "0";
-    daysElement.textContent = "0";
+  setDefaultAsOnDate();
 
 
-    calculatedAsOnElement.textContent =
-        "—";
+  yearsElement.textContent = "0";
+  monthsElement.textContent = "0";
+  daysElement.textContent = "0";
 
-    nextBirthdayElement.textContent =
-        "—";
+  calculatedAsOnElement.textContent = "—";
 
-    daysUntilBirthdayElement.textContent =
-        "—";
+  nextBirthdayElement.textContent = "—";
 
-
-    birthdayHighlight.textContent =
-        "—";
+  daysUntilBirthdayElement.textContent = "—";
 
 
-    heroAgePreview.textContent =
-        "—";
-
-    heroBirthdayPreview.textContent =
-        "Coming soon";
-
-
-    totalDaysElement.textContent =
-        "0";
-
-    totalWeeksElement.textContent =
-        "0";
-
-    totalMonthsElement.textContent =
-        "0";
-
-    totalHoursElement.textContent =
-        "0";
-
-    totalMinutesElement.textContent =
-        "0";
-
-    totalSecondsElement.textContent =
-        "0";
+  totalDaysElement.textContent = "0";
+  totalWeeksElement.textContent = "0";
+  totalMonthsElement.textContent = "0";
+  totalHoursElement.textContent = "0";
+  totalMinutesElement.textContent = "0";
+  totalSecondsElement.textContent = "0";
 
 
-    clearError();
+  const highlight =
+    document.getElementById(
+      "birthdayHighlight"
+    );
 
-    dateOfBirthInput.focus();
+  const birthdayDate =
+    document.getElementById(
+      "birthdayDate"
+    );
+
+
+  if (highlight) {
+
+    highlight.textContent = "—";
+
+  }
+
+
+  if (birthdayDate) {
+
+    birthdayDate.textContent = "—";
+
+  }
+
+
+  clearError();
+
+  dateOfBirthInput.focus();
+
 }
 
 
-/* =========================
-   BUTTON EVENTS
-========================= */
-
-calculateBtn.addEventListener(
-    "click",
-    calculateAge
+calculateBtn?.addEventListener(
+  "click",
+  calculateAge
 );
 
-resetBtn.addEventListener(
-    "click",
-    resetCalculator
+resetBtn?.addEventListener(
+  "click",
+  resetCalculator
 );
 
-
-/* =========================
-   INITIALIZE
-========================= */
 
 setDefaultAsOnDate();
