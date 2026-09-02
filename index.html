@@ -4,138 +4,191 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Age Calculator India – Exact Age Calculator</title>
+  <title>Age Calculator India – Exact Age in Years, Months & Days</title>
 
-  <meta name="description" content="Free Age Calculator to calculate exact age in years, months and days, next birthday and life statistics. Supports DD/MM/YYYY format.">
+  <meta name="description" content="Free Age Calculator India to calculate exact age in years, months and days, age as on any date, next birthday and life statistics. Supports DD/MM/YYYY format.">
+
+  <meta name="keywords" content="age calculator, age calculator India, exact age calculator, calculate age, age in years months days, date of birth calculator, next birthday calculator">
 
   <meta name="robots" content="index, follow">
-  <meta name="author" content="Age Calculator">
+  <meta name="author" content="Age Calculator India">
+  <meta name="application-name" content="Age Calculator India">
   <meta name="theme-color" content="#087ff5">
 
   <link rel="canonical" href="https://choudhary2026manikant.github.io/age-calculator/">
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Age Calculator India – Exact Age Calculator">
+  <meta property="og:description" content="Calculate your exact age in years, months and days, age as on any date, next birthday and life statistics.">
+  <meta property="og:url" content="https://choudhary2026manikant.github.io/age-calculator/">
+  <meta property="og:site_name" content="Age Calculator India">
 
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Age Calculator India – Exact Age Calculator">
+  <meta name="twitter:description" content="Free online age calculator for exact age, next birthday and life statistics.">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* =========================
-       MULTILINGUAL SELECTOR
-       ========================= */
-
-    .language-selector-wrap {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      margin-left: 5px;
+    .language-selector-wrap{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      margin-left:5px
     }
 
-    .language-selector-wrap span {
-      font-size: 17px;
+    .language-selector-wrap span{
+      font-size:17px
     }
 
-    #languageSelector {
-      height: 40px;
-      min-width: 145px;
-      padding: 0 32px 0 12px;
-      border: 1px solid #e1e6ef;
-      border-radius: 9px;
-      background: #fff;
-      color: #25324a;
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      outline: none;
+    #languageSelector{
+      height:40px;
+      min-width:145px;
+      padding:0 32px 0 12px;
+      border:1px solid #e1e6ef;
+      border-radius:9px;
+      background:#fff;
+      color:#25324a;
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+      outline:none
     }
 
-    #languageSelector:focus {
-      border-color: #7c2ff3;
-      box-shadow: 0 0 0 4px rgba(124,47,243,.10);
+    #languageSelector:focus{
+      border-color:#7c2ff3;
+      box-shadow:0 0 0 4px rgba(124,47,243,.10)
     }
 
-    /* Google Translate hidden native toolbar */
     .goog-te-banner-frame.skiptranslate,
     .goog-te-gadget-icon,
-    .goog-te-balloon-frame {
-      display: none !important;
+    .goog-te-balloon-frame{
+      display:none!important
     }
 
-    body {
-      top: 0 !important;
+    body{
+      top:0!important
     }
 
-    .goog-te-gadget {
-      font-size: 0 !important;
+    .goog-te-gadget{
+      font-size:0!important
     }
 
-    #google_translate_element {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      opacity: 0;
-      pointer-events: none;
-      left: -9999px;
+    #google_translate_element{
+      position:absolute;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+      opacity:0;
+      pointer-events:none;
+      left:-9999px
     }
 
-    /* Language loading message */
-    .translation-status {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 9999;
-      background: #14213d;
-      color: #fff;
-      padding: 10px 15px;
-      border-radius: 9px;
-      font-size: 12px;
-      font-weight: 800;
-      box-shadow: 0 12px 30px rgba(20,33,61,.22);
-      display: none;
+    .translation-status{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:9999;
+      background:#14213d;
+      color:#fff;
+      padding:10px 15px;
+      border-radius:9px;
+      font-size:12px;
+      font-weight:800;
+      box-shadow:0 12px 30px rgba(20,33,61,.22);
+      display:none
     }
 
-    @media(max-width:1000px) {
-      .language-selector-wrap {
-        margin-left: auto;
+    @media(max-width:1000px){
+      .language-selector-wrap{
+        margin-left:auto
       }
 
-      #languageSelector {
-        min-width: 125px;
+      #languageSelector{
+        min-width:125px
       }
     }
 
-    @media(max-width:650px) {
-      .language-selector-wrap span {
-        display: none;
+    @media(max-width:650px){
+      .language-selector-wrap span{
+        display:none
       }
 
-      #languageSelector {
-        min-width: 110px;
-        height: 36px;
-        font-size: 11px;
+      #languageSelector{
+        min-width:110px;
+        height:36px;
+        font-size:11px
       }
     }
   </style>
 
+  <!-- WebApplication Schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"WebApplication",
-    "name":"Age Calculator",
+    "name":"Age Calculator India",
     "url":"https://choudhary2026manikant.github.io/age-calculator/",
     "applicationCategory":"UtilitiesApplication",
     "operatingSystem":"Web Browser",
-    "description":"Free online age calculator for calculating exact age in years, months and days.",
+    "description":"Free online age calculator for calculating exact age in years, months and days, next birthday and life statistics.",
     "inLanguage":"en"
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What date format does the calculator use?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"The calculator uses DD/MM/YYYY format. Example: 15/08/1995."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Can I calculate age as on a specific date?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes. Enter your date of birth and the date on which you want to calculate your age."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Is the Age Calculator free?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes. The calculator is free to use."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Does the Age Calculator work on mobile?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes. The website is responsive and works on mobile phones, tablets and computers."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Is my date of birth stored?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"The calculator performs calculations directly in your browser and does not require an account."
+        }
+      }
+    ]
   }
   </script>
 </head>
 
 <body>
-
-  <!-- =========================
-       GOOGLE TRANSLATE ENGINE
-       ========================= -->
 
   <div id="google_translate_element"></div>
 
@@ -143,58 +196,27 @@
     Changing language…
   </div>
 
-
-  <!-- =========================
-       TOP BAR
-       ========================= -->
-
   <header class="topbar">
 
     <a class="brand" href="./">
-
-      <div class="brand-icon">
-        🎂
-      </div>
-
+      <div class="brand-icon">🎂</div>
       <div>
         <strong>Age Calculator</strong>
         <small>INDIA</small>
       </div>
-
     </a>
 
-
     <nav class="nav-links">
-
-      <a href="#calculator" class="active">
-        Age Calculator
-      </a>
-
-      <a href="#how-to-use">
-        How to Use
-      </a>
-
-      <a href="#faq">
-        FAQ
-      </a>
-
-      <a href="age-calculator-india.html">
-        India Guide
-      </a>
-
+      <a href="#calculator" class="active">Age Calculator</a>
+      <a href="#how-to-use">How to Use</a>
+      <a href="#faq">FAQ</a>
+      <a href="age-calculator-india.html">India Guide</a>
     </nav>
 
-
-    <!-- LANGUAGE SELECTOR -->
-
     <div class="language-selector-wrap">
-
       <span>🌐</span>
 
-      <select
-        id="languageSelector"
-        aria-label="Select language"
-      >
+      <select id="languageSelector" aria-label="Select language">
 
         <option value="en">English</option>
 
@@ -293,17 +315,11 @@
         <option value="mt">Malti</option>
 
       </select>
-
     </div>
 
   </header>
 
-
   <main id="calculator">
-
-    <!-- =========================
-         HERO
-         ========================= -->
 
     <section class="hero-shell">
 
@@ -325,84 +341,55 @@
           and useful life statistics.
         </p>
 
-
         <div class="feature-strip">
 
           <div class="mini-feature">
-
             <span>🎯</span>
-
             <div>
               <b>Exact Age</b>
               <small>Years, Months, Days</small>
             </div>
-
           </div>
 
-
           <div class="mini-feature">
-
             <span>🎂</span>
-
             <div>
               <b>Next Birthday</b>
               <small>Days Remaining</small>
             </div>
-
           </div>
 
-
           <div class="mini-feature">
-
             <span>📊</span>
-
             <div>
               <b>Life Statistics</b>
               <small>Days to Seconds</small>
             </div>
-
           </div>
 
-
           <div class="mini-feature">
-
             <span>🔒</span>
-
             <div>
               <b>Private</b>
               <small>Runs in Browser</small>
             </div>
-
           </div>
 
         </div>
 
       </div>
 
-
-      <!-- =========================
-           CALCULATOR
-           ========================= -->
-
       <div class="calculator-panel">
 
         <div class="panel-title">
-
           <span>🧮</span>
-
           <h2>Age Calculator</h2>
-
         </div>
-
 
         <div class="accent-line"></div>
 
-
         <div class="date-field">
-
-          <label for="dateOfBirth">
-            📅 Date of Birth
-          </label>
+          <label for="dateOfBirth">📅 Date of Birth</label>
 
           <input
             type="text"
@@ -416,15 +403,10 @@
           <p class="field-help">
             Example: 15/08/1995
           </p>
-
         </div>
 
-
         <div class="date-field">
-
-          <label for="asOnDate">
-            📆 Age as on Date
-          </label>
+          <label for="asOnDate">📆 Age as on Date</label>
 
           <input
             type="text"
@@ -437,19 +419,13 @@
           <p class="field-help">
             Calculate age up to any date
           </p>
-
         </div>
-
 
         <div class="button-group">
 
-          <button
-            id="calculateBtn"
-            type="button"
-          >
+          <button id="calculateBtn" type="button">
             Calculate My Age →
           </button>
-
 
           <button
             id="resetBtn"
@@ -461,20 +437,11 @@
 
         </div>
 
-
-        <p
-          id="errorMessage"
-          class="error-message"
-        ></p>
+        <p id="errorMessage" class="error-message"></p>
 
       </div>
 
     </section>
-
-
-    <!-- =========================
-         RESULTS
-         ========================= -->
 
     <section class="results-wrap">
 
@@ -484,104 +451,48 @@
           🎯 Your Exact Age
         </div>
 
-
         <p class="result-date">
-
           Age as on:
-
-          <strong id="calculatedAsOn">
-            —
-          </strong>
-
+          <strong id="calculatedAsOn">—</strong>
         </p>
-
 
         <div class="age-grid">
 
           <div class="age-box">
-
-            <span id="years">
-              0
-            </span>
-
-            <small>
-              Years
-            </small>
-
-            <strong>
-              Years
-            </strong>
-
+            <span id="years">0</span>
+            <small>Years</small>
+            <strong>Years</strong>
           </div>
 
-
           <div class="age-box">
-
-            <span id="months">
-              0
-            </span>
-
-            <small>
-              Months
-            </small>
-
-            <strong>
-              Months
-            </strong>
-
+            <span id="months">0</span>
+            <small>Months</small>
+            <strong>Months</strong>
           </div>
 
-
           <div class="age-box">
-
-            <span id="days">
-              0
-            </span>
-
-            <small>
-              Days
-            </small>
-
-            <strong>
-              Days
-            </strong>
-
+            <span id="days">0</span>
+            <small>Days</small>
+            <strong>Days</strong>
           </div>
 
         </div>
 
-
         <div class="details">
 
           <div class="detail-item">
-
-            <span>
-              Date of Birth
-            </span>
-
-            <strong id="birthDateDisplay">
-              —
-            </strong>
-
+            <span>Date of Birth</span>
+            <strong id="birthDateDisplay">—</strong>
           </div>
 
-
           <div class="detail-item">
-
-            <span>
-              Next Birthday
-            </span>
-
-            <strong id="nextBirthday">
-              —
-            </strong>
-
+            <span>Next Birthday</span>
+            <strong id="nextBirthday">—</strong>
           </div>
 
         </div>
 
       </div>
-
 
       <div class="birthday-card">
 
@@ -589,39 +500,27 @@
           🎂 Next Birthday
         </div>
 
-
         <div class="birthday-body">
 
           <div>
 
-            <p>
-              Your next birthday
-            </p>
+            <p>Your next birthday</p>
 
-            <strong id="birthdayHighlight">
-              —
-            </strong>
+            <strong id="birthdayHighlight">—</strong>
 
             <span>
               📅
-              <span id="birthdayDate">
-                —
-              </span>
+              <span id="birthdayDate">—</span>
             </span>
 
             <span>
               ⏳
-              <strong id="daysUntilBirthday">
-                —
-              </strong>
+              <strong id="daysUntilBirthday">—</strong>
             </span>
 
           </div>
 
-
-          <div class="cake">
-            🎂
-          </div>
+          <div class="cake">🎂</div>
 
         </div>
 
@@ -629,303 +528,121 @@
 
     </section>
 
-
-    <!-- =========================
-         LIFE STATISTICS
-         ========================= -->
-
     <section class="statistics-section">
 
       <div class="section-heading">
-
         <span>📊</span>
-
-        <h2>
-          Your Life Statistics
-        </h2>
-
+        <h2>Your Life Statistics</h2>
       </div>
-
 
       <p class="statistics-subtitle">
         Approximate total time up to the selected date
       </p>
 
-
       <div class="statistics-grid">
 
         <div class="stat-card">
-
-          <div class="stat-icon green-icon">
-            📅
-          </div>
-
-          <span
-            id="totalDays"
-            class="stat-value"
-          >
-            0
-          </span>
-
-          <span class="stat-label">
-            Total Days
-          </span>
-
+          <div class="stat-icon green-icon">📅</div>
+          <span id="totalDays" class="stat-value">0</span>
+          <span class="stat-label">Total Days</span>
         </div>
 
-
         <div class="stat-card">
-
-          <div class="stat-icon pink-icon">
-            📆
-          </div>
-
-          <span
-            id="totalWeeks"
-            class="stat-value"
-          >
-            0
-          </span>
-
-          <span class="stat-label">
-            Total Weeks
-          </span>
-
+          <div class="stat-icon pink-icon">📆</div>
+          <span id="totalWeeks" class="stat-value">0</span>
+          <span class="stat-label">Total Weeks</span>
         </div>
 
-
         <div class="stat-card">
-
-          <div class="stat-icon blue-icon">
-            🗓️
-          </div>
-
-          <span
-            id="totalMonths"
-            class="stat-value"
-          >
-            0
-          </span>
-
-          <span class="stat-label">
-            Total Months
-          </span>
-
+          <div class="stat-icon blue-icon">🗓️</div>
+          <span id="totalMonths" class="stat-value">0</span>
+          <span class="stat-label">Total Months</span>
         </div>
 
-
         <div class="stat-card">
-
-          <div class="stat-icon orange-icon">
-            ⏰
-          </div>
-
-          <span
-            id="totalHours"
-            class="stat-value"
-          >
-            0
-          </span>
-
-          <span class="stat-label">
-            Total Hours
-          </span>
-
+          <div class="stat-icon orange-icon">⏰</div>
+          <span id="totalHours" class="stat-value">0</span>
+          <span class="stat-label">Total Hours</span>
         </div>
 
-
         <div class="stat-card">
-
-          <div class="stat-icon cyan-icon">
-            ⏱️
-          </div>
-
-          <span
-            id="totalMinutes"
-            class="stat-value"
-          >
-            0
-          </span>
-
-          <span class="stat-label">
-            Total Minutes
-          </span>
-
+          <div class="stat-icon cyan-icon">⏱️</div>
+          <span id="totalMinutes" class="stat-value">0</span>
+          <span class="stat-label">Total Minutes</span>
         </div>
 
-
         <div class="stat-card">
-
-          <div class="stat-icon pink-icon">
-            ⚡
-          </div>
-
-          <span
-            id="totalSeconds"
-            class="stat-value"
-          >
-            0
-          </span>
-
-          <span class="stat-label">
-            Total Seconds
-          </span>
-
+          <div class="stat-icon pink-icon">⚡</div>
+          <span id="totalSeconds" class="stat-value">0</span>
+          <span class="stat-label">Total Seconds</span>
         </div>
 
       </div>
 
     </section>
-
-
-    <!-- =========================
-         INFO CARDS
-         ========================= -->
 
     <section class="info-grid">
 
       <article class="info-card mint">
 
         <h2>
-
-          <span class="info-icon">
-            ✓
-          </span>
-
+          <span class="info-icon">✓</span>
           What does this Age Calculator do?
-
         </h2>
 
-
         <ul>
-
-          <li>
-            Calculates exact age in years, months and days.
-          </li>
-
-          <li>
-            Calculates age as on any selected date.
-          </li>
-
-          <li>
-            Shows your next birthday.
-          </li>
-
-          <li>
-            Shows days remaining until your birthday.
-          </li>
-
-          <li>
-            Shows total days, weeks, months, hours, minutes and seconds.
-          </li>
-
+          <li>Calculates exact age in years, months and days.</li>
+          <li>Calculates age as on any selected date.</li>
+          <li>Shows your next birthday.</li>
+          <li>Shows days remaining until your birthday.</li>
+          <li>Shows total days, weeks, months, hours, minutes and seconds.</li>
         </ul>
 
-
-        <div class="decor">
-          🎯
-        </div>
+        <div class="decor">🎯</div>
 
       </article>
-
 
       <article class="info-card blue-tint">
 
         <h2>
-
-          <span class="info-icon">
-            1
-          </span>
-
+          <span class="info-icon">1</span>
           How to Use?
-
         </h2>
 
-
         <ol>
-
-          <li>
-            Enter your date of birth.
-          </li>
-
-          <li>
-            Enter the Age as on Date.
-          </li>
-
-          <li>
-            Click “Calculate My Age”.
-          </li>
-
-          <li>
-            View your exact age and statistics.
-          </li>
-
+          <li>Enter your date of birth.</li>
+          <li>Enter the Age as on Date.</li>
+          <li>Click “Calculate My Age”.</li>
+          <li>View your exact age and statistics.</li>
         </ol>
 
-
-        <div class="decor">
-          🧮
-        </div>
+        <div class="decor">🧮</div>
 
       </article>
-
 
       <article class="info-card purple-tint">
 
         <h2>
-
-          <span class="info-icon">
-            🔒
-          </span>
-
+          <span class="info-icon">🔒</span>
           Your Privacy
-
         </h2>
 
-
         <ul>
-
-          <li>
-            No account is required.
-          </li>
-
-          <li>
-            No sign-up is required.
-          </li>
-
-          <li>
-            The calculator runs directly in your browser.
-          </li>
-
-          <li>
-            Your date of birth is not submitted by the calculator.
-          </li>
-
+          <li>No account is required.</li>
+          <li>No sign-up is required.</li>
+          <li>The calculator runs directly in your browser.</li>
+          <li>Your date of birth is not submitted by the calculator.</li>
         </ul>
 
-
-        <div class="decor">
-          🔐
-        </div>
+        <div class="decor">🔐</div>
 
       </article>
 
     </section>
 
+    <section id="how-to-use" class="content-section">
 
-    <!-- =========================
-         HOW TO USE
-         ========================= -->
-
-    <section
-      id="how-to-use"
-      class="content-section"
-    >
-
-      <h2>
-        How to Calculate Your Exact Age
-      </h2>
-
+      <h2>How to Calculate Your Exact Age</h2>
 
       <p>
         Enter your date of birth in DD/MM/YYYY format
@@ -933,27 +650,12 @@
         your age.
       </p>
 
-
       <ol>
-
-        <li>
-          Enter your Date of Birth.
-        </li>
-
-        <li>
-          Enter the Age as on Date.
-        </li>
-
-        <li>
-          Click Calculate My Age.
-        </li>
-
-        <li>
-          Your exact age will appear instantly.
-        </li>
-
+        <li>Enter your Date of Birth.</li>
+        <li>Enter the Age as on Date.</li>
+        <li>Click Calculate My Age.</li>
+        <li>Your exact age will appear instantly.</li>
       </ol>
-
 
       <p>
         The calculator also shows your next birthday
@@ -962,103 +664,56 @@
 
     </section>
 
+    <section id="faq" class="faq-section">
 
-    <!-- =========================
-         FAQ
-         ========================= -->
-
-    <section
-      id="faq"
-      class="faq-section"
-    >
-
-      <h2>
-        Frequently Asked Questions
-      </h2>
-
+      <h2>Frequently Asked Questions</h2>
 
       <details>
-
-        <summary>
-          What date format does the calculator use?
-        </summary>
-
+        <summary>What date format does the calculator use?</summary>
         <p>
           The calculator uses DD/MM/YYYY format.
           Example: 15/08/1995.
         </p>
-
       </details>
 
-
       <details>
-
-        <summary>
-          Can I calculate age as on a specific date?
-        </summary>
-
+        <summary>Can I calculate age as on a specific date?</summary>
         <p>
           Yes. Enter your date of birth and the date
           on which you want to calculate your age.
         </p>
-
       </details>
 
-
       <details>
-
-        <summary>
-          Is the Age Calculator free?
-        </summary>
-
+        <summary>Is the Age Calculator free?</summary>
         <p>
           Yes. The calculator is free to use.
         </p>
-
       </details>
 
-
       <details>
-
-        <summary>
-          Does the calculator work on mobile?
-        </summary>
-
+        <summary>Does the calculator work on mobile?</summary>
         <p>
           Yes. The website is responsive and works on
           mobile phones, tablets and computers.
         </p>
-
       </details>
 
-
       <details>
-
-        <summary>
-          Is my date of birth stored?
-        </summary>
-
+        <summary>Is my date of birth stored?</summary>
         <p>
           The calculator performs calculations directly
           in your browser and does not require an account.
         </p>
-
       </details>
 
     </section>
-
-
-    <!-- =========================
-         CONTACT / CTA
-         ========================= -->
 
     <section class="contact-strip">
 
       <div>
 
-        <span>
-          💡
-        </span>
+        <span>💡</span>
 
         <div>
 
@@ -1074,23 +729,15 @@
 
       </div>
 
-
       <div>
-
         <a href="age-calculator-india.html">
           India Age Guide →
         </a>
-
       </div>
 
     </section>
 
   </main>
-
-
-  <!-- =========================
-       FOOTER
-       ========================= -->
 
   <footer class="footer">
 
@@ -1098,34 +745,18 @@
       © 2026 Age Calculator India. All rights reserved.
     </p>
 
-
     <div class="socials">
-
-      <span>
-        f
-      </span>
-
-      <span>
-        𝕏
-      </span>
-
-      <span>
-        in
-      </span>
-
+      <span>f</span>
+      <span>𝕏</span>
+      <span>in</span>
     </div>
 
   </footer>
 
-
-  <!-- Existing calculator engine -->
+  <!-- Calculator Engine -->
   <script src="script.js"></script>
 
-
-  <!-- =========================
-       GOOGLE TRANSLATE
-       ========================= -->
-
+  <!-- Google Translate -->
   <script>
 
     function googleTranslateElementInit() {
@@ -1133,6 +764,7 @@
       new google.translate.TranslateElement(
         {
           pageLanguage: "en",
+
           includedLanguages:
             "en,hi,bn,ta,te,mr,gu,kn,ml,pa,ur,as,or,ne,si," +
             "es,fr,de,it,pt,nl,pl,uk,ru,tr,ro,cs,sk,hu,el,bg," +
@@ -1142,28 +774,24 @@
             "sw,am,zu,xh,af,so,ha,yo,ig," +
             "az,kk,uz,ky,tg,tk,ka,hy,sq,bs,mk," +
             "la,eo,cy,ga,eu,ca,gl,mt",
-          autoDisplay: false
+
+          autoDisplay:false
         },
+
         "google_translate_element"
       );
 
     }
 
-
     function changeLanguage(languageCode) {
 
       const status =
-        document.getElementById(
-          "translationStatus"
-        );
-
+        document.getElementById("translationStatus");
 
       if (languageCode === "en") {
 
         const select =
-          document.querySelector(
-            ".goog-te-combo"
-          );
+          document.querySelector(".goog-te-combo");
 
         if (select) {
 
@@ -1178,7 +806,6 @@
         return;
       }
 
-
       if (status) {
 
         status.textContent =
@@ -1187,21 +814,17 @@
         status.style.display =
           "block";
 
-        setTimeout(function() {
+        setTimeout(function(){
 
           status.style.display =
             "none";
 
-        }, 2500);
+        },2500);
 
       }
 
-
       const googleSelect =
-        document.querySelector(
-          ".goog-te-combo"
-        );
-
+        document.querySelector(".goog-te-combo");
 
       if (googleSelect) {
 
@@ -1216,22 +839,20 @@
 
     }
 
-
     document.addEventListener(
       "DOMContentLoaded",
-      function() {
+      function(){
 
         const selector =
           document.getElementById(
             "languageSelector"
           );
 
-
         if (selector) {
 
           selector.addEventListener(
             "change",
-            function() {
+            function(){
 
               changeLanguage(
                 this.value
@@ -1247,12 +868,10 @@
 
   </script>
 
-
   <script
     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-    async
-  ></script>
-
+    async>
+  </script>
 
 </body>
 </html>
