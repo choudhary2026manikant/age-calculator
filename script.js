@@ -92,66 +92,180 @@ function getToday() {
 
 
 /*
-  Format date as YYYY-MM-DD
-  for date input fields.
+  Format a Date object as DD/MM/YYYY.
 */
 
-function formatInputDate(date) {
-
-  const year =
-    date.getFullYear();
-
-  const month =
-    String(
-      date.getMonth() + 1
-    ).padStart(2, "0");
+function formatDisplayDate(date) {
 
   const day =
     String(
       date.getDate()
     ).padStart(2, "0");
 
-  return `${year}-${month}-${day}`;
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+  const year =
+    date.getFullYear();
+
+  return `${day}/${month}/${year}`;
 }
 
 
 /*
-  Create a local date.
+  Automatically add / after DD and MM.
 */
 
-function createDate(
-  year,
-  month,
-  day
-) {
-
-  return new Date(
-    year,
-    month,
-    day
-  );
-}
-
-
-/*
-  Convert date input value
-  into a local date.
-*/
-
-function parseInputDate(
+function formatDateInputValue(
   value
 ) {
 
-  const parts =
-    value
-      .split("-")
-      .map(Number);
+  let digits =
+    value.replace(/\D/g, "");
 
-  return createDate(
-    parts[0],
-    parts[1] - 1,
-    parts[2]
-  );
+  digits =
+    digits.slice(0, 8);
+
+
+  if (digits.length > 4) {
+
+    return (
+      digits.slice(0, 2) +
+      "/" +
+      digits.slice(2, 4) +
+      "/" +
+      digits.slice(4)
+    );
+
+  }
+
+
+  if (digits.length > 2) {
+
+    return (
+      digits.slice(0, 2) +
+      "/" +
+      digits.slice(2)
+    );
+
+  }
+
+
+  return digits;
+}
+
+
+/*
+  Handle DD/MM/YYYY typing.
+*/
+
+function handleDateInput(
+  event
+) {
+
+  const input =
+    event.target;
+
+  input.value =
+    formatDateInputValue(
+      input.value
+    );
+}
+
+
+/*
+  Add automatic date formatting
+  to both date fields.
+*/
+
+dateOfBirthInput.addEventListener(
+  "input",
+  handleDateInput
+);
+
+asOnDateInput.addEventListener(
+  "input",
+  handleDateInput
+);
+
+
+/*
+  Validate DD/MM/YYYY
+  and convert to a local Date.
+*/
+
+function parseIndianDate(
+  value
+) {
+
+  const pattern =
+    /^(\d{2})\/(\d{2})\/(\d{4})$/;
+
+  const match =
+    value.match(pattern);
+
+
+  if (!match) {
+
+    return null;
+  }
+
+
+  const day =
+    Number(match[1]);
+
+  const month =
+    Number(match[2]);
+
+  const year =
+    Number(match[3]);
+
+
+  /*
+    Basic range validation.
+  */
+
+  if (
+    day < 1 ||
+    day > 31 ||
+    month < 1 ||
+    month > 12
+  ) {
+
+    return null;
+  }
+
+
+  /*
+    Create date.
+  */
+
+  const date =
+    new Date(
+      year,
+      month - 1,
+      day
+    );
+
+
+  /*
+    Check that JavaScript did not
+    automatically change the date.
+  */
+
+  if (
+    date.getFullYear() !== year ||
+    date.getMonth() !== month - 1 ||
+    date.getDate() !== day
+  ) {
+
+    return null;
+  }
+
+
+  return date;
 }
 
 
@@ -244,8 +358,7 @@ function calculateExactAge(
 
 
 /*
-  Calculate next birthday
-  relative to target date.
+  Calculate next birthday.
 */
 
 function getNextBirthday(
@@ -278,7 +391,7 @@ function getNextBirthday(
 
 
   let nextBirthday =
-    createDate(
+    new Date(
       birthdayYear,
       birthMonth,
       birthdayDay
@@ -304,7 +417,7 @@ function getNextBirthday(
       );
 
     nextBirthday =
-      createDate(
+      new Date(
         birthdayYear,
         birthMonth,
         birthdayDay
@@ -332,25 +445,6 @@ function getDaysBetween(
   return Math.round(
     (date2 - date1) /
     millisecondsPerDay
-  );
-}
-
-
-/*
-  Format date for display.
-*/
-
-function formatDate(
-  date
-) {
-
-  return date.toLocaleDateString(
-    "en-IN",
-    {
-      day: "2-digit",
-      month: "long",
-      year: "numeric"
-    }
   );
 }
 
@@ -406,10 +500,6 @@ function calculateLifeStatistics(
     1000 * 60 * 60 * 24;
 
 
-  /*
-    Total number of days lived.
-  */
-
   const totalMilliseconds =
     targetDate - birthDate;
 
@@ -420,19 +510,11 @@ function calculateLifeStatistics(
     );
 
 
-  /*
-    Total weeks.
-  */
-
   const totalWeeks =
     Math.floor(
       totalDays / 7
     );
 
-
-  /*
-    Total months.
-  */
 
   const age =
     calculateExactAge(
@@ -440,30 +522,19 @@ function calculateLifeStatistics(
       targetDate
     );
 
+
   const totalMonths =
     age.years * 12 +
     age.months;
 
 
-  /*
-    Total hours.
-  */
-
   const totalHours =
     totalDays * 24;
 
 
-  /*
-    Total minutes.
-  */
-
   const totalMinutes =
     totalHours * 60;
 
-
-  /*
-    Total seconds.
-  */
 
   const totalSeconds =
     totalMinutes * 60;
@@ -521,8 +592,7 @@ function displayLifeStatistics(
 
 
 /*
-  Set today's date as default
-  Age as on Date.
+  Set today's date in DD/MM/YYYY.
 */
 
 function setDefaultAsOnDate() {
@@ -531,7 +601,7 @@ function setDefaultAsOnDate() {
     getToday();
 
   asOnDateInput.value =
-    formatInputDate(
+    formatDisplayDate(
       today
     );
 }
@@ -547,13 +617,13 @@ function calculateAge() {
 
 
   /*
-    Check date of birth.
+    Check Date of Birth.
   */
 
   if (!dateOfBirthInput.value) {
 
     showError(
-      "कृपया अपनी जन्म तारीख चुनें।"
+      "कृपया अपनी जन्म तारीख DD/MM/YYYY में दर्ज करें।"
     );
 
     return;
@@ -567,7 +637,7 @@ function calculateAge() {
   if (!asOnDateInput.value) {
 
     showError(
-      "कृपया Age as on Date चुनें।"
+      "कृपया Age as on Date DD/MM/YYYY में दर्ज करें।"
     );
 
     return;
@@ -575,22 +645,68 @@ function calculateAge() {
 
 
   /*
-    Convert dates.
+    Parse dates.
   */
 
   const birthDate =
-    parseInputDate(
+    parseIndianDate(
       dateOfBirthInput.value
     );
 
   const targetDate =
-    parseInputDate(
+    parseIndianDate(
       asOnDateInput.value
     );
 
 
   /*
-    Prevent invalid date range.
+    Validate Date of Birth.
+  */
+
+  if (!birthDate) {
+
+    showError(
+      "कृपया सही Date of Birth DD/MM/YYYY में दर्ज करें।"
+    );
+
+    return;
+  }
+
+
+  /*
+    Validate Age as on Date.
+  */
+
+  if (!targetDate) {
+
+    showError(
+      "कृपया सही Age as on Date DD/MM/YYYY में दर्ज करें।"
+    );
+
+    return;
+  }
+
+
+  /*
+    Prevent future Date of Birth.
+  */
+
+  const today =
+    getToday();
+
+  if (birthDate > today) {
+
+    showError(
+      "जन्म तारीख भविष्य की नहीं हो सकती।"
+    );
+
+    return;
+  }
+
+
+  /*
+    Prevent calculation date
+    before Date of Birth.
   */
 
   if (birthDate > targetDate) {
@@ -629,7 +745,7 @@ function calculateAge() {
   */
 
   calculatedAsOnElement.textContent =
-    formatDate(
+    formatDisplayDate(
       targetDate
     );
 
@@ -646,7 +762,7 @@ function calculateAge() {
 
 
   nextBirthdayElement.textContent =
-    formatDate(
+    formatDisplayDate(
       nextBirthday
     );
 
@@ -670,7 +786,7 @@ function calculateAge() {
   } else {
 
     daysUntilBirthdayElement.textContent =
-      `${daysRemaining} दिन`;
+      `${formatNumber(daysRemaining)} दिन`;
   }
 
 
@@ -685,10 +801,6 @@ function calculateAge() {
     );
 
 
-  /*
-    Display Life Statistics.
-  */
-
   displayLifeStatistics(
     statistics
   );
@@ -696,30 +808,16 @@ function calculateAge() {
 
 
 /*
-  Reset complete calculator.
+  Reset calculator.
 */
 
 function resetCalculator() {
 
-  /*
-    Clear date of birth.
-  */
-
   dateOfBirthInput.value =
     "";
 
-
-  /*
-    Reset Age as on Date
-    to today.
-  */
-
   setDefaultAsOnDate();
 
-
-  /*
-    Reset age.
-  */
 
   yearsElement.textContent =
     "0";
@@ -731,17 +829,9 @@ function resetCalculator() {
     "0";
 
 
-  /*
-    Reset calculation date.
-  */
-
   calculatedAsOnElement.textContent =
     "—";
 
-
-  /*
-    Reset birthday information.
-  */
 
   nextBirthdayElement.textContent =
     "—";
@@ -749,10 +839,6 @@ function resetCalculator() {
   daysUntilBirthdayElement.textContent =
     "—";
 
-
-  /*
-    Reset Life Statistics.
-  */
 
   totalDaysElement.textContent =
     "0";
@@ -773,16 +859,7 @@ function resetCalculator() {
     "0";
 
 
-  /*
-    Remove error.
-  */
-
   clearError();
-
-
-  /*
-    Focus date field.
-  */
 
   dateOfBirthInput.focus();
 }
@@ -809,7 +886,7 @@ resetBtn.addEventListener(
 
 
 /*
-  Set default date on page load.
+  Set today's date on page load.
 */
 
 setDefaultAsOnDate();

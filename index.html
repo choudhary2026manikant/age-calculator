@@ -34,19 +34,12 @@
     content="#2563eb"
   >
 
-  <meta
-    name="color-scheme"
-    content="light"
-  >
-
-
   <!-- Google Search Console Verification -->
 
   <meta
     name="google-site-verification"
     content="s3xC9bFCTATFSRI-k4ival80HqZpAFnd4sQd3rwjNxg"
   >
-
 
   <!-- Open Graph -->
 
@@ -70,7 +63,6 @@
     content="https://choudhary2026manikant.github.io/age-calculator/"
   >
 
-
   <!-- Twitter -->
 
   <meta
@@ -88,7 +80,6 @@
     content="Calculate exact age, age as on any date, next birthday and life statistics."
   >
 
-
   <!-- Canonical -->
 
   <link
@@ -96,14 +87,12 @@
     href="https://choudhary2026manikant.github.io/age-calculator/"
   >
 
-
   <!-- Favicon -->
 
   <link
     rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎂%3C/text%3E%3C/svg%3E"
   >
-
 
   <!-- Structured Data -->
 
@@ -117,7 +106,6 @@
   }
   </script>
 
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -129,7 +117,6 @@
     "description": "Calculate exact age in years, months and days online."
   }
   </script>
-
 
   <link
     rel="stylesheet"
@@ -183,10 +170,22 @@
           </label>
 
           <input
-            type="date"
+            type="text"
             id="dateOfBirth"
             name="dateOfBirth"
+            placeholder="DD/MM/YYYY"
+            inputmode="numeric"
+            maxlength="10"
+            autocomplete="bday"
+            aria-describedby="dobHelp"
           >
+
+          <p
+            class="field-help"
+            id="dobHelp"
+          >
+            Enter your date of birth in DD/MM/YYYY format.
+          </p>
 
         </div>
 
@@ -198,13 +197,21 @@
           </label>
 
           <input
-            type="date"
+            type="text"
             id="asOnDate"
             name="asOnDate"
+            placeholder="DD/MM/YYYY"
+            inputmode="numeric"
+            maxlength="10"
+            autocomplete="off"
+            aria-describedby="asOnHelp"
           >
 
-          <p class="field-help">
-            Leave this as today to calculate your current age.
+          <p
+            class="field-help"
+            id="asOnHelp"
+          >
+            Enter the date on which you want to calculate your age.
           </p>
 
         </div>
@@ -542,18 +549,19 @@
 
         <p>
           To calculate your exact age, enter your
-          date of birth and choose the date on which
-          you want to calculate your age.
+          date of birth in DD/MM/YYYY format and
+          choose the date on which you want to
+          calculate your age.
         </p>
 
         <ol>
 
           <li>
-            Select your date of birth.
+            Enter your date of birth.
           </li>
 
           <li>
-            Select the Age as on Date.
+            Enter the Age as on Date.
           </li>
 
           <li>
@@ -647,6 +655,20 @@
         <details>
 
           <summary>
+            What date format should I use?
+          </summary>
+
+          <p>
+            Enter the date in DD/MM/YYYY format.
+            For example, 15/08/1998.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
             Can I calculate my age in days?
           </summary>
 
@@ -726,6 +748,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Yes. Enter your date of birth and select the date on which you want to know your age."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What date format should I use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter the date in DD/MM/YYYY format."
             }
           },
           {
