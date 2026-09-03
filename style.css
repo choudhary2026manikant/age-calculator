@@ -215,7 +215,7 @@ main {
     90deg,
     #8b21d7,
     #1c70ef,
-    #f24d2e
+    #b08a2e
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -542,7 +542,7 @@ main {
 .birthday-body > div:first-child > strong {
   display: block;
   font-size: 21px;
-  color: #ef3f2d;
+  color: #b08a2e;
 }
 
 .birthday-body > div:first-child > span {
@@ -1493,5 +1493,251 @@ body {
 
   .faq-section summary {
     font-size: 17px !important;
+  }
+}
+
+/* =========================================================
+   NAVY + SOFT YELLOW PREMIUM THEME — V5
+   Eye-friendly yellow / navy palette
+   Red and green removed from the premium theme
+   ========================================================= */
+
+:root {
+  --navy-deep: #071827;
+  --navy-main: #102b43;
+  --navy-soft: #183b59;
+  --yellow-main: #d8b84c;
+  --yellow-soft: #f0d77a;
+  --yellow-pale: #fff0b0;
+  --gold-main: #d8b84c;
+  --gold-light: #f0d77a;
+}
+
+body {
+  color: #f8f4e5 !important;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(216,184,76,.13), transparent 28%),
+    radial-gradient(circle at 86% 25%, rgba(52,91,122,.22), transparent 32%),
+    linear-gradient(120deg, #071827 0%, #0b2034 38%, #122c43 68%, #091a2a 100%) !important;
+  background-attachment: fixed !important;
+}
+
+main {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(216,184,76,.09), transparent 30%),
+    linear-gradient(120deg, rgba(7,24,39,.96), rgba(16,43,67,.92) 52%, rgba(8,25,40,.96)) !important;
+}
+
+.topbar {
+  background: linear-gradient(100deg, rgba(5,19,31,.98), rgba(16,43,67,.98)) !important;
+  border-bottom: 2px solid var(--gold-main) !important;
+  box-shadow: 0 6px 25px rgba(0,0,0,.32) !important;
+}
+
+.brand,
+.nav-links a,
+.language-selector-wrap > span {
+  color: #fff !important;
+}
+
+.brand strong,
+.hero-copy h1,
+.panel-title h2,
+.section-heading h2,
+.content-section h2,
+.faq-section h2,
+.contact-strip h2 {
+  color: #fff !important;
+  -webkit-text-stroke: 1px var(--gold-main) !important;
+  text-shadow: 0 3px 10px rgba(0,0,0,.55) !important;
+}
+
+.hero-shell {
+  max-width: 1240px;
+  background:
+    radial-gradient(circle at 7% 22%, rgba(216,184,76,.12), transparent 32%),
+    radial-gradient(circle at 95% 20%, rgba(52,91,122,.18), transparent 34%),
+    linear-gradient(115deg, rgba(7,24,39,.96), rgba(16,43,67,.91) 58%, rgba(8,26,42,.96)) !important;
+  border-bottom: 2px solid rgba(216,184,76,.62) !important;
+}
+
+.hero-shell::before {
+  background: linear-gradient(135deg,
+    rgba(216,184,76,.08),
+    rgba(255,255,255,.025),
+    rgba(52,91,122,.08)) !important;
+}
+
+.hero-copy > p,
+.mini-feature,
+.trust-pill,
+.feature-strip,
+.hero-copy li,
+.hero-copy span {
+  color: #f8f4e5 !important;
+}
+
+.feature-strip {
+  background: transparent !important;
+}
+
+.mini-feature {
+  background: linear-gradient(135deg, rgba(10,31,49,.96), rgba(20,55,82,.92)) !important;
+  border: 2px solid rgba(216,184,76,.70) !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,.28) !important;
+}
+
+.calculator-panel {
+  background: linear-gradient(145deg, rgba(8,25,40,.98), rgba(16,43,67,.98)) !important;
+  border: 3px solid var(--gold-main) !important;
+  box-shadow: 0 22px 55px rgba(0,0,0,.44), 0 0 24px rgba(216,184,76,.08) !important;
+}
+
+.panel-title,
+.section-ribbon.green,
+.section-ribbon.orange {
+  background: linear-gradient(90deg, #0a2135, #163b59, #102b43) !important;
+  color: #fff !important;
+  border-bottom: 2px solid var(--gold-main) !important;
+}
+
+.date-field label,
+.date-field input,
+.date-field .input-label,
+.calculator-panel label {
+  color: #fff !important;
+}
+
+.date-field input,
+#languageSelector {
+  background: rgba(255,255,255,.97) !important;
+  color: #102b43 !important;
+  border: 2px solid var(--gold-main) !important;
+}
+
+.date-field input:focus,
+#languageSelector:focus {
+  border-color: var(--yellow-soft) !important;
+  box-shadow: 0 0 0 3px rgba(216,184,76,.18), 0 0 14px rgba(216,184,76,.10) !important;
+}
+
+.button-group button {
+  border: 2px solid var(--gold-main) !important;
+  background: linear-gradient(90deg, #d2b044, #e1c15a, #c5a33d) !important;
+  color: #081827 !important;
+  box-shadow: 0 9px 22px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.35) !important;
+  text-shadow: none !important;
+}
+
+.button-group button:hover {
+  background: linear-gradient(90deg, #e0c45d, #f0d77a, #d4b34b) !important;
+}
+
+.button-group button:last-child {
+  background: linear-gradient(90deg, #0a2135, #163b59, #0c2439) !important;
+  color: #fff !important;
+}
+
+.results-wrap {
+  background: transparent !important;
+}
+
+.result-section,
+.birthday-card,
+.statistics-section,
+.info-card,
+.content-section,
+.faq-section,
+.contact-strip {
+  background: linear-gradient(135deg, rgba(8,25,40,.97), rgba(16,43,67,.97)) !important;
+  border: 2px solid rgba(216,184,76,.68) !important;
+  box-shadow: 0 18px 45px rgba(0,0,0,.34) !important;
+  color: #fff !important;
+}
+
+.result-section *,
+.birthday-card *,
+.statistics-section *,
+.info-card *,
+.content-section *,
+.faq-section *,
+.contact-strip * {
+  color: #fff;
+}
+
+.age-box,
+.stat-card {
+  background: linear-gradient(145deg, rgba(14,42,65,.98), rgba(7,24,39,.98)) !important;
+  border: 2px solid var(--gold-main) !important;
+  box-shadow: inset 0 0 22px rgba(0,0,0,.16) !important;
+}
+
+.age-box:nth-child(even),
+.stat-card:nth-child(even) {
+  background: linear-gradient(145deg, rgba(22,55,81,.98), rgba(8,27,43,.98)) !important;
+}
+
+.age-number,
+.stat-value,
+#birthdayDate,
+#daysUntilBirthday {
+  color: var(--yellow-soft) !important;
+  -webkit-text-stroke: 1px #9d7d25 !important;
+  text-shadow: 0 3px 9px rgba(0,0,0,.58) !important;
+}
+
+.result-date,
+.stat-label,
+.birthday-body,
+.statistics-subtitle,
+.info-card p,
+.info-card li,
+.content-section p,
+.content-section li,
+.faq-section p {
+  color: #f8f4e5 !important;
+}
+
+.faq-section summary {
+  color: var(--yellow-soft) !important;
+  -webkit-text-stroke: .45px #9d7d25 !important;
+}
+
+.contact-strip a {
+  color: var(--yellow-soft) !important;
+}
+
+.footer {
+  background: linear-gradient(100deg, #061725 0%, #0b2135 38%, #12324b 70%, #081b2c 100%) !important;
+  border-top: 2px solid var(--gold-main) !important;
+  color: #fff !important;
+}
+
+.footer * {
+  color: #fff !important;
+}
+
+.footer a:hover {
+  color: var(--yellow-soft) !important;
+}
+
+@media (max-width: 700px) {
+  body {
+    background-attachment: scroll !important;
+  }
+
+  .hero-shell {
+    background: linear-gradient(145deg, rgba(7,24,39,.97), rgba(16,43,67,.97)) !important;
+  }
+
+  .calculator-panel,
+  .result-section,
+  .birthday-card,
+  .statistics-section,
+  .info-card,
+  .content-section,
+  .faq-section,
+  .contact-strip {
+    border-width: 2px !important;
   }
 }
